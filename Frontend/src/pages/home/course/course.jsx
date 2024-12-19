@@ -46,7 +46,7 @@ const Layout2 = () => (
 const Layout3 = () => (
   <div className="p-6 bg-green-100 border-l-4 border-green-500 rounded-lg">
     <h1 className="text-2xl font-bold text-green-700">Jenis - Jenis Library</h1>
-    <div className="grid grid-cols-4 gap-4 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-xl font-bold mb-4">
           <code className="bg-green-200 px-2 py-1 rounded-md">#include &lt;stdio.h&gt;</code>
@@ -87,11 +87,10 @@ const Layout3 = () => (
   </div>
 );
 
-
 const Layout4 = () => (
   <div className="p-6 bg-yellow-100 border-l-4 border-yellow-500 rounded-lg">
     <h1 className="text-2xl font-bold text-yellow-700">Printf (Output)</h1>
-    <div className="grid grid-cols-2 gap-4 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
       <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center">
         <p>printf adalah fungsi yang paling sering digunakan untuk mencetak output ke layar dalam bahasa C.</p>
       </div>
@@ -113,7 +112,7 @@ const Layout4 = () => (
 
 const Layout5 = () => (
   <div className="p-6 bg-yellow-100 border-l-4 border-yellow-500 rounded-lg">
-    <div className="grid grid-cols-1 gap-4 p-4 text-start">
+    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-4 text-start">
       <h1 className="text-2xl font-bold text-yellow-700 text-start">Contoh printf()</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg flex-col items-center justify-center">
         <p>printf adalah fungsi yang paling sering digunakan untuk mencetak output ke layar dalam bahasa C.</p>
@@ -155,12 +154,12 @@ const Layout7 = () => (
     <div className="grid grid-cols-1 gap-4 p-4 text-start">
       <h1 className="text-2xl font-bold text-gray-700 text-start">Kode Program</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg flex-col items-center justify-center">
-        <img src="/assets/course/3.kode_puts().png" alt="gambar" className='w-full' />
+        <img src="/assets/course/3.kode_puts().png" alt="gambar" className='h-40' />
       </div>
       <h1 className="text-2xl font-bold text-gray-700 text-start">Teknologi</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg flex-col items-center justify-center text-start">
         <p>Tanpa menggunakan \n</p>
-        <img src="/assets/course/4.teknologi.png" alt="gambar" className='w-full' />
+        <img src="/assets/course/4.teknologi.png" alt="gambar" className='h-40' />
       </div>
     </div>
   </div>
@@ -194,11 +193,11 @@ const Layout9 = () => (
     <div className="grid grid-cols-1 gap-4 p-4 text-start">
       <h1 className="text-2xl font-bold text-gray-700 text-start">Kode Program</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg flex-col items-center justify-center">
-        <img src="/assets/course/5.kode_scanf().png" alt="gambar" className='w-full' />
+        <img src="/assets/course/5.kode_scanf().png" alt="gambar" className='' />
       </div>
       <h1 className="text-2xl font-bold text-gray-700 text-start">Output</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg flex-col items-center justify-center text-start">
-        <img src="/assets/course/6.output_scanf().png" alt="gambar" className='w-full' />
+        <img src="/assets/course/6.output_scanf().png" alt="gambar" className='' />
       </div>
     </div>
   </div>
@@ -293,7 +292,7 @@ const Course = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-slate-950">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl text-center">
+      <div className="bg-white shadow-lg rounded-lg m-8 p-8 w-full max-w-4xl text-center overflow-auto">
         <ActivePage /> {/* Menampilkan layout berdasarkan halaman aktif */}
 
         {/* Navigasi */}

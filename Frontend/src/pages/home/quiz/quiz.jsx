@@ -31,6 +31,7 @@ const Question = ({
             checked={selectedOption === option}
             onChange={() => onOptionChange(option)}
             className="hidden"
+            required
           />
           {option}
         </label>
@@ -70,7 +71,7 @@ const ResultPage = ({ answers, questions, score, correctAnswers, onFinish }) => 
         {questions.map((question, index) => (
           <div key={index}>
             <h3 className="font-semibold text-md md:text-lg mb-2">Soal {question.number}</h3>
-            
+
             {/* Menampilkan gambar soal */}
             <div className="mb-4 flex justify-center">
               <img
@@ -79,21 +80,21 @@ const ResultPage = ({ answers, questions, score, correctAnswers, onFinish }) => 
                 className="w-full sm:w-3/4 lg:w-1/2 h-auto shadow-md"
               />
             </div>
-            
+
             {/* Menampilkan jawaban */}
             <p
-              className={`font-medium ${answers[index] === correctAnswers[index]
+              className={`font-medium ${answers[question.number] === correctAnswers[question.number]
                 ? "text-lime-500"
                 : "text-red-600"
-              }`}
+                }`}
             >
-              Jawaban Anda: {answers[index]} (
-              {answers[index] === correctAnswers[index] ? "Benar" : "Salah"})
+              Jawaban Anda: {answers[question.number]} (
+              {answers[question.number] === correctAnswers[question.number] ? "Benar" : "Salah"})
             </p>
-            
+
             {/* Menampilkan jawaban yang benar */}
             <p className="font-medium text-green-500">
-              Jawaban yang Benar: {correctAnswers[index]}
+              Jawaban yang Benar: {correctAnswers[question.number]}
             </p>
           </div>
         ))}
@@ -107,6 +108,7 @@ const ResultPage = ({ answers, questions, score, correctAnswers, onFinish }) => 
     </div>
   </div>
 );
+
 
 
 const Quiz = () => {
@@ -127,11 +129,11 @@ const Quiz = () => {
 
   const correctAnswers = {
     1: "Tipe Data",
-    2: "Tipe Data",
-    3: "Perintah Cetak",
+    2: "Variabel",
+    3: "Penugasan",
     4: "Perintah Cetak",
     5: "Menyimpan",
-    6: "Memanggil Prosedur",
+    6: "Memanggil Nilai Variabel",
     7: "Mengembalikan Nilai",
   };
 
@@ -140,10 +142,20 @@ const Quiz = () => {
     0
   );
 
-  const goToPage = (page) => setCurrentPage(page);
-  const handleOptionChange = (option) => {
-    setAnswers({ ...answers, [currentPage]: option });
+  const goToPage = (page) => {
+    if (page >= 0 && page < questions.length) {  // Pastikan halaman dalam rentang yang valid
+      setCurrentPage(page);
+    }
   };
+  
+  const handleOptionChange = (option) => {
+    setAnswers((prevAnswers) => ({
+      ...prevAnswers,
+      [questions[currentPage].number]: option, // Gunakan number dari soal
+    }));
+  };
+  
+
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -153,19 +165,24 @@ const Quiz = () => {
     closeModal();
   };
 
-  const handleStart = () => setCurrentPage(0);
+  const handleStart = () => {
+    setCurrentPage(0);  // Mulai dari soal pertama
+    setAnswers({});      // Reset semua jawaban
+  };
+  
 
   const onFinish = () => {
     setShowResults(false);
     setCurrentPage(null);
-    setAnswers({}); 
+    setAnswers({}); // Reset answers ke objek kosong
   };
   
+
 
   if (showResults) {
     return <ResultPage answers={answers} questions={questions} correctAnswers={correctAnswers} score={score} onFinish={onFinish} />;
   }
-  
+
   const currentQuestion = questions[currentPage];
 
   return (
@@ -190,12 +207,13 @@ const Quiz = () => {
               ))}
             </div>
             <Question
-              number={currentQuestion.number}
-              imageSrc={currentQuestion.imageSrc}
-              options={currentQuestion.options}
-              selectedOption={answers[currentPage] || ""}
-              onOptionChange={handleOptionChange}
-            />
+  number={currentQuestion.number}
+  imageSrc={currentQuestion.imageSrc}
+  options={currentQuestion.options}
+  selectedOption={answers[currentQuestion.number] || ""}  // Pastikan ini benar
+  onOptionChange={handleOptionChange}
+/>
+
             <div className="flex justify-between mt-6">
               <button
                 onClick={() => goToPage(currentPage - 1)}

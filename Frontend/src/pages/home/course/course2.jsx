@@ -6,11 +6,11 @@ const Layout1 = () => (
     <h1 className="text-xl md:text-2xl font-bold text-green-700">Operator Bilangan</h1>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
       <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
-        <img src="/assets/course2/1.operator.png" alt="gambar" className="h-40 md:h-60 lg:h-full" />
+        <img src="/assets/course2/1.operator.png" alt="gambar" className="" />
       </div>
       <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
         <h2>Oprator Aritmatika Unary</h2>
-        <img src="/assets/course2/2.operator.png" alt="gambar" className="h-40 md:h-60 lg:h-full" />
+        <img src="/assets/course2/2.operator.png" alt="gambar" className="" />
       </div>
       <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg col-span-1 md:col-span-2">
         <h2 className="text-lg md:text-xl mb-4">
@@ -46,7 +46,7 @@ const Layout3 = () => (
       </div>
       <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
         <h2 className="text-lg md:text-xl mb-4">Output :</h2>
-        <img src="/assets/course2/5.output_operator.png" alt="img" className="h-full" />
+        <img src="/assets/course2/5.output_operator.png" alt="img" className="h-40" />
       </div>
     </div>
   </div>
@@ -57,7 +57,7 @@ const Layout4 = () => (
     <h1 className="text-xl md:text-2xl font-bold text-green-700">Operator Logika / Boolean</h1>
     <div className="grid grid-cols-1 gap-4 p-4">
       <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
-        <img src="/assets/course2/6.operator.png" alt="gambar" className="h-40 md:h-60 lg:h-full" />
+        <img src="/assets/course2/6.operator.png" alt="gambar" className="" />
       </div>
       <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
         <h2 className="text-lg md:text-xl mb-4">
@@ -112,7 +112,7 @@ const Course2 = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-slate-950">
-      <div className="bg-white shadow-lg rounded-lg p-6 md:p-8 w-full max-w-4xl text-center">
+      <div className="bg-white shadow-lg rounded-lg m-8 p-8 md:p-8 w-full max-w-4xl text-center overflow-auto">
         <ActivePage />
 
         <div className="flex justify-between mt-4">

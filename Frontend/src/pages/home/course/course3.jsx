@@ -70,7 +70,7 @@ const Course3 = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-slate-950">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl text-center">
+      <div className="bg-white shadow-lg rounded-lg m-8 p-8 w-full max-w-4xl text-center overflow-auto">
         <ActivePage /> {/* Menampilkan layout berdasarkan halaman aktif */}
 
         {/* Navigasi */}

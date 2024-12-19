@@ -11,7 +11,7 @@ const CourseMenu = () => {
         </h1>
 
         {/* Grid Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
           {/* Card 1 */}
           <Link
             to="/introduction"
