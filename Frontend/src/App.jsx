@@ -43,11 +43,11 @@ const App = () => {
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/evaluation" element={<Evaluation score={5} totalQuestions={7} />} />
             {/* Rute yang dilindungi */}
-            <Route
+            {/* <Route
               path="/quiz"
               element={
                 <ProtectedRoute>
-                  {/* <Quiz /> */}
+                  <Quiz />
                 </ProtectedRoute>
               }
             />
@@ -66,7 +66,7 @@ const App = () => {
                   <Quiz />
                 </ProtectedRoute>
               }
-            />
+            /> */}
           </Routes>
         </Sidebar>
       </IdentityProvider>

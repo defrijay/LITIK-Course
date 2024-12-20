@@ -207,12 +207,12 @@ const Quiz = () => {
               ))}
             </div>
             <Question
-  number={currentQuestion.number}
-  imageSrc={currentQuestion.imageSrc}
-  options={currentQuestion.options}
-  selectedOption={answers[currentQuestion.number] || ""}  // Pastikan ini benar
-  onOptionChange={handleOptionChange}
-/>
+            number={currentQuestion.number}
+            imageSrc={currentQuestion.imageSrc}
+            options={currentQuestion.options}
+            selectedOption={answers[currentQuestion.number] || ""}  // Pastikan ini benar
+            onOptionChange={handleOptionChange}
+          />
 
             <div className="flex justify-between mt-6">
               <button

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const introduction = () => {
   return (
-    <section className="flex-col gap-12 bg-gray-50 dark:bg-slate-950 min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16">
+    <section className="flex-col gap-12 bg-gray-50 dark:bg-slate-950 min-h-screen flex items-center justify-center p-20 px-12 sm:px-16 md:px-20 lg:px-28">
       {/* Judul */}
       <h1 className="text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl dark:text-white font-bold text-center">
         Pendahuluan
@@ -11,20 +11,13 @@ const introduction = () => {
 
       {/* Deskripsi */}
       <p className="text-gray-900 text-sm sm:text-base md:text-lg lg:text-xl dark:text-white text-justify max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
-        Halo, Sobat Programmer! 🚀
-        Selamat datang di materi Bahasa C yang dirancang khusus untuk membantumu memahami dasar-dasar program prosedural. Bahasa C adalah fondasi banyak bahasa pemrograman modern, dan di sini kamu akan belajar tentang:
+        Di era digital yang serba canggih, pemahaman dasar mengenai mekanisme Input-Proses-Output (IPO) menjadi salah satu kunci dalam penguasaan pemrograman. Konsep ini menjelaskan bagaimana data diambil sebagai input, diproses oleh program, dan menghasilkan output berupa informasi yang dapat dimanfaatkan untuk berbagai keperluan.
         <br />
         <br />
-        <strong>1. Mekanisme Input, Proses, Output:</strong> Pelajari bagaimana program menerima data, mengolahnya, dan memberikan hasil yang bermanfaat.
-        <br />
-        <strong>2. Operator Bilangan:</strong> Pahami cara kerja operator dalam Bahasa C untuk melakukan berbagai perhitungan.
-        <br />
-        <strong>3. Video Animasi:</strong> Nikmati visualisasi interaktif yang mempermudah pemahamanmu.
-        <br />
-        <strong>4. Kuis:</strong> Tantang dirimu dengan kuis menarik untuk menguji sejauh mana pemahamanmu.
+        Pada materi ini, kita akan membahas peran perangkat input dan output serta memahami bagaimana data diproses menggunakan bahasa pemrograman C. Penggunaan library seperti stdio.h, math.h, dan string.h akan dipelajari untuk mendukung berbagai fungsi dasar, seperti printf, puts, dan scanf, yang mempermudah pengembangan program yang interaktif. Selain itu, pengenalan operator dalam bahasa C, seperti aritmatika, logika, dan perbandingan, akan memberikan fondasi untuk memecahkan masalah secara sistematis.
         <br />
         <br />
-        Yuk, mulai perjalananmu menjadi programmer yang hebat dengan menguasai Bahasa C! 💻🔥
+        Dengan pendekatan yang mencakup simulasi, evaluasi melalui quiz, dan pembahasan menyeluruh, materi ini dirancang agar pembelajaran lebih menarik, praktis, dan relevan dalam mengembangkan keterampilan pemrograman yang aplikatif.
       </p>
 
       {/* Tombol navigasi */}
@@ -35,12 +28,6 @@ const introduction = () => {
         >
           Sebelumnya
         </Link>
-        {/* <Link
-          to="/course-emu"
-          className="px-4 sm:px-6 md:px-8 lg:px-12 py-2 text-xs sm:text-sm md:text-base lg:text-lg rounded-full bg-gradient-to-r from-orange-600 to-orange-400 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 text-white"
-        >
-          Selanjutnya
-        </Link> */}
       </div>
     </section>
   );
