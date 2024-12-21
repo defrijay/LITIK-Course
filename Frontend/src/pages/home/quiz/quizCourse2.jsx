@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 const Guide = ({ onNext }) => (
   <div className="h-screen px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
@@ -83,8 +84,8 @@ const Question = ({
 
 const StartPage = ({ onStart }) => (
   <div className="h-screen flex flex-col items-center justify-center text-white bg-gradient-to-r from-cyan-500 to-blue-500">
-    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">04</h1>
-    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Kuis</h1>
+    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Quiz</h1>
+    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Materi 2</h1>
     <button
       onClick={onStart}
       className="text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-full px-16 sm:px-20 md:px-24 py-2.5"
@@ -139,12 +140,12 @@ const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoT
       >
         Lihat Pembahasan
       </button> */}
-      <button
-        onClick={onFinish}
+      <Link
+        to='/course3'
         className="mt-6 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
       >
         Selesai
-      </button>
+      </Link>
     </div>
   </div>
 );
@@ -206,7 +207,7 @@ const Pembahasan = ({ answers, correctAnswers, questions, pembahasan, onBackToSt
 
 
 
-const Quiz = () => {
+const QuizCourse2 = () => {
   const [currentPage, setCurrentPage] = useState(null);
   const [answers, setAnswers] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -216,42 +217,21 @@ const Quiz = () => {
 
 
   const questions = [
-    { number: 1, imageSrc: "", text: "Apa fungsi utama dari library stdio.h dalam bahasa C?", options: ["Mengelola Memori", "Operasi Input dan Output", "Operasi logika", "Pengolahan String"] },
-    { number: 2, imageSrc: "", text: "Operator logika digunakan untuk...", options: ["Membandingkan dua nilai", "Melakukan perhitungan matematika", "Menghasilkan nilai boolean", "Menampilkan hasil keluaran"] },
-    { number: 3, imageSrc: "", text: "Format string %d pada fungsi printf() digunakan untuk mencetak…", options: ["String", "Bilangan desimal", "Bilangan bulat", "Karakter tunggal"] },
-    { number: 4, imageSrc: "", text: "Fungsi puts() dalam bahasa C akan...", options: ["Mencetak string dengan format tertentu", "Mengambil input dari keyboard", "Mencetak string dengan tambahan baris baru", "Menghitung panjang string"] },
-    { number: 5, imageSrc: "", text: "Simbol & pada fungsi scanf() berfungsi untuk...", options: ["Menyimpan nilai variabel", "Mengakses alamat memori variabel", "Menambah nilai variabel", "Menampilkan nilai variabel"] },
-    { number: 6, imageSrc: "", text: "Apa yang dimaksud dengan output pada mekanisme Input-Proses-Output?", options: ["Data yang dimasukkan pengguna ke programr", "Langkah-langkah pemrosesan data", "Informasi yang dihasilkan setelah pemrosesan", "Variabel yang digunakan dalam program"] },
-    { number: 7, imageSrc: "", text: "Manakah yang merupakan operator perbandingan dalam bahasa C?", options: ["=", "==", "&&", "+"] },
-    { number: 8, imageSrc: "", text: "Apa tujuan utama dari penggunaan operator % dalam bahasa C?", options: ["Membandingkan dua nilai", "Mengambil sisa hasil pembagian", "Menyimpan nilai ke variabel", "Menampilkan nilai ke layar"] },
-    { number: 9, imageSrc: "./assets/quiz/image.png", text: "Apa output dari kode berikut?", options: ["15", "10", "5", "Tidak ada output"] },
-    { number: 10, imageSrc: "", text: "Manakah pernyataan berikut yang benar tentang fungsi puts() dalam bahasa C?", options: ["Mencetak string tanpa tambahan baris baru di akhir.", "Mencetak string dengan format tertentu.", "Mencetak string sederhana dan menambahkan baris baru di akhir.", "Mengambil input dari keyboard."] },
+    { number: 1, imageSrc: "", text: "Library apa yang digunakan untuk operasi input-output dalam bahasa C?", options: ["math.h", "stdio.h", "string.h", "stdlib.h"] },
+    { number: 2, imageSrc: "", text: "Apa fungsi utama dari puts()?", options: ["Mengambil input dari pengguna", "Mencetak string dengan newline", "Menyalin string ke variabel lain", "Mencetak string tanpa newline"] },
+    { number: 3, imageSrc: "", text: "Format apa yang digunakan untuk mencetak string menggunakan printf()?", options: ["%d", "%f", "%s", "%c"] },
   ];
 
   const correctAnswers = {
-    1: "Operasi Input dan Output",
-    2: "Menghasilkan nilai boolean",
-    3: "Bilangan bulat",
-    4: "Mencetak string dengan tambahan baris baru",
-    5: "Mengakses alamat memori variabel",
-    6: "Informasi yang dihasilkan setelah pemrosesan",
-    7: "==",
-    8: "Mengambil sisa hasil pembagian",
-    9: "15",
-    10: "Mencetak string sederhana dan menambahkan baris baru di akhir.",
+    1: "stdio.h",
+    2: "Mencetak string dengan newline",
+    3: "%s",
   };
 
   const pembahasan = {
     1: "Fungsi utama dari library stdio.h adalah untuk operasi input dan output, seperti fungsi printf() dan scanf().",
     2: "Operator logika menghasilkan nilai boolean (benar atau salah).",
     3: "Format %d digunakan untuk mencetak bilangan bulat dalam format desimal.",
-    4: "Fungsi puts() mencetak string dan menambahkan baris baru di akhir.",
-    5: "Simbol & pada scanf() digunakan untuk mengakses alamat memori variabel.",
-    6: "Output adalah informasi yang dihasilkan setelah pemrosesan data.",
-    7: "Operator == adalah operator perbandingan yang digunakan untuk membandingkan dua nilai.",
-    8: "Operator % digunakan untuk mengambil sisa hasil pembagian.",
-    9: "Output dari kode tersebut adalah 15.",
-    10: "Fungsi puts() mencetak string sederhana dan menambahkan baris baru di akhir.",
   };
 
 
@@ -415,4 +395,4 @@ const Quiz = () => {
   );
 };
 
-export default Quiz;
+export default QuizCourse2;

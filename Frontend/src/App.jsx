@@ -18,7 +18,10 @@ import Quiz from './pages/home/quiz/quiz.jsx';
 import Identity from './pages/home/quiz/identity.jsx';
 import ProtectedRoute from './middleware/ProtectedRoute.jsx';
 import { IdentityProvider } from './context/IdentityContext';
-import Evaluation from './pages/home/quiz/evaluation.jsx';
+// import Evaluation from './pages/home/quiz/evaluation.jsx';
+import QuizCourse from './pages/home/quiz/quizCourse.jsx';
+import QuizCourse2 from './pages/home/quiz/quizCourse2.jsx';
+import QuizCourse3 from './pages/home/quiz/quizCourse3.jsx';
 
 const App = () => {
   return (
@@ -40,8 +43,11 @@ const App = () => {
             <Route path="/course2" element={<Course2 />} />
             <Route path="/course3" element={<Course3 />} />
             <Route path="/identity" element={<Identity />} />
+            <Route path="/quiz-course" element={<QuizCourse />} />
+            <Route path="/quiz-course2" element={<QuizCourse2 />} />
+            <Route path="/quiz-course3" element={<QuizCourse3 />} />
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="/evaluation" element={<Evaluation score={5} totalQuestions={7} />} />
+            {/* <Route path="/evaluation" element={<Evaluation score={5} totalQuestions={7} />} /> */}
             {/* Rute yang dilindungi */}
             {/* <Route
               path="/quiz"
