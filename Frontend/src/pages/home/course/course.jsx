@@ -257,7 +257,7 @@ const Course = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     } else {
-      window.location.replace("/course2");  // Ganti dengan replace untuk tidak menambahkannya ke history
+      window.location.replace("/quiz-course");  
     }
   };
 

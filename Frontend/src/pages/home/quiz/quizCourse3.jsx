@@ -214,9 +214,9 @@ const QuizCourse3 = () => {
 
 
   const questions = [
-    { number: 1, imageSrc: "", text: "Jika a = 7 dan b = 4, apa hasil dari operasi berikut?", options: ["12", "11", "15", "7"] },
-    { number: 2, imageSrc: "", text: "Apa hasil dari operasi berikut ini pada bahasa C?", options: ["3", "10", "1", "0"] },
-    { number: 3, imageSrc: "", text: "Jika a = 10 dan b = 5, apa hasil dari ekspresi berikut?", options: ["false", "true", "0", "10"] },
+    { number: 1, imageSrc: "./assets/quiz/image2.png", text: "Jika a = 7 dan b = 4, apa hasil dari operasi berikut?", options: ["12", "11", "15", "7"] },
+    { number: 2, imageSrc: "./assets/quiz/image3.png", text: "Apa hasil dari operasi berikut ini pada bahasa C?", options: ["3", "10", "1", "0"] },
+    { number: 3, imageSrc: "./assets/quiz/image4.png", text: "Jika a = 10 dan b = 5, apa hasil dari ekspresi berikut?", options: ["false", "true", "0", "10"] },
   ];
 
   const correctAnswers = {

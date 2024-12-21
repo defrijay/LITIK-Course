@@ -91,7 +91,7 @@ const Course2 = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     } else {
-      window.location.replace("/course3");
+      window.location.replace("/quiz-course2");
     }
   };
 
