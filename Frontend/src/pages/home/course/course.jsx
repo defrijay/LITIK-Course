@@ -130,7 +130,7 @@ const Layout5 = () => (
 const Layout6 = () => (
   <div className="p-6 bg-gray-100 border-l-4 border-gray-500 rounded-lg">
     <h1 className="text-2xl font-bold text-gray-700">Puts</h1>
-    <div className="grid grid-cols-2 gap-4 p-4">
+    <div className="grid grid-cols-1 gap-4 p-4">
       <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center">
         <p>Puts adalah fungsi sederhana yang digunakan untuk mencetak <b>string ke layar, tanpa format.</b></p>
       </div>
@@ -168,7 +168,7 @@ const Layout7 = () => (
 const Layout8 = () => (
   <div className="p-6 bg-lime-100 border-l-4 border-lime-500 rounded-lg">
     <h1 className="text-2xl font-bold text-lime-700">Scanf (input)</h1>
-    <div className="grid grid-cols-2 gap-4 p-4">
+    <div className="grid grid-cols-1 gap-4 p-4">
       <div className="bg-white p-6 rounded-lg shadow-lg flex items-center justify-center">
         <p>Fungsi <b>scanf()</b> adalah fungsi untuk <b>mengambil input dari keyboard.</b> Fungsi ini memiliki format seperti fungsi printf().</p>
       </div>
