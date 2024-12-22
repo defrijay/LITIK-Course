@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Onboarding = () => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center space-y-8 bg-slate-950 text-white">
+    <div className="h-screen flex flex-col items-center justify-center space-y-8 p-12 bg-slate-950 text-white">
       {/* Judul utama */}
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center font-bold text-purple-600">
         Algoritma dan Pemrograman

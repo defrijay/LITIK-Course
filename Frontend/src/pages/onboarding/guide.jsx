@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Guide = () => {
   return (
-    <section className="flex-col gap-12 bg-slate-950 min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16">
+    <section className="flex-col gap-12 bg-slate-950 min-h-screen flex items-center justify-center p-12 sm:px-6 md:px-10 lg:px-16">
       {/* Judul */}
       <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold text-center">
         Petunjuk Penggunaan

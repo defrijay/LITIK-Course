@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Menu = () => {
   return (
-    <section className="flex-col bg-gray-50 dark:bg-slate-950 h-screen flex items-center justify-center px-6 sm:px-12 md:px-20 lg:px-32">
-      <div className="h-screen gap-4 flex flex-col items-center justify-center space-y-8 dark:bg-slate-950 text-white">
+    <section className="flex-col bg-slate-950 h-screen flex items-center justify-center p-12 sm:px-12 md:px-20 lg:px-32">
+      <div className="h-screen gap-4 flex flex-col items-center justify-center space-y-8 bg-slate-950 text-white">
         {/* Judul */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-center">
           Menu
@@ -15,7 +15,7 @@ const Menu = () => {
           {/* Card 1 */}
           <Link
             to="/outcomes"
-            className="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-md text-gray-900 hover:shadow-lg transition-transform transform hover:scale-105"
+            className="flex items-center space-x-8 bg-white rounded-lg py-4 px-8 shadow-md text-gray-900 hover:shadow-lg transition-transform transform hover:scale-105"
           >
             <div className="w-12 h-12 bg-purple-600 text-white flex items-center justify-center rounded-full text-xl font-bold">
               01
@@ -31,7 +31,7 @@ const Menu = () => {
           {/* Card 2 */}
           <Link
             to="/course-menu"
-            className="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-md text-gray-900 hover:shadow-lg transition-transform transform hover:scale-105"
+            className="flex items-center space-x-8 bg-white rounded-lg py-4 px-8 shadow-md text-gray-900 hover:shadow-lg transition-transform transform hover:scale-105"
           >
             <div className="w-12 h-12 bg-orange-500 text-white flex items-center justify-center rounded-full text-xl font-bold">
               02
@@ -47,7 +47,7 @@ const Menu = () => {
           {/* Card 3 */}
           <Link
             to="/quiz"
-            className="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-md text-gray-900 hover:shadow-lg transition-transform transform hover:scale-105"
+            className="flex items-center space-x-8 bg-white rounded-lg py-4 px-8 shadow-md text-gray-900 hover:shadow-lg transition-transform transform hover:scale-105"
           >
             <div className="w-12 h-12 bg-red-500 text-white flex items-center justify-center rounded-full text-xl font-bold">
               03

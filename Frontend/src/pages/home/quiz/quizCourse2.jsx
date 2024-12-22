@@ -88,7 +88,7 @@ const StartPage = ({ onStart }) => (
     <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Materi 2</h1>
     <button
       onClick={onStart}
-      className="text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-full px-16 sm:px-20 md:px-24 py-2.5"
+      className="text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-full px-16 sm:px-20 md:px-24 py-2.5"
     >
       Mulai
     </button>
@@ -96,7 +96,7 @@ const StartPage = ({ onStart }) => (
 );
 
 const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoToPembahasan }) => (
-  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-50 dark:bg-gray-900 py-6 px-4">
+  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 py-6 px-4">
     <div className="w-full max-w-lg flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-lg">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Hasil Quiz</h2>
       <p className="text-lg sm:text-xl md:text-2xl mb-6">Skor Anda: {score} / {questions.length}</p>
@@ -152,7 +152,7 @@ const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoT
 
 
 const Pembahasan = ({ answers, correctAnswers, questions, pembahasan, onBackToStart }) => (
-  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-50 dark:bg-gray-900 py-6 px-4">
+  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 py-6 px-4">
     <div className="w-full max-w-lg flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-lg">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Pembahasan</h2>
       <div className="w-full space-y-6">
@@ -312,8 +312,8 @@ const QuizCourse2 = () => {
       {currentPage === null ? (
         <StartPage onStart={handleStart} />
       ) : (
-        <div className="h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 px-12">
-          <div className="bg-gray-50 dark:bg-blue-950 shadow-lg rounded-lg p-8 w-full max-w-4xl">
+        <div className="h-screen flex flex-col items-center justify-center bg-gray-900 px-12">
+          <div className="bg-blue-950 shadow-lg rounded-lg p-8 w-full max-w-4xl">
             <div className="flex justify-center mb-6 gap-2">
               {questions.map((_, index) => (
                 <button
@@ -367,7 +367,7 @@ const QuizCourse2 = () => {
           </div>
           {isModalOpen && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <div className="bg-gray-50 dark:bg-blue-900 text-white rounded-lg p-6 w-full max-w-md shadow-lg text-center">
+              <div className="bg-blue-900 text-white rounded-lg p-6 w-full max-w-md shadow-lg text-center">
                 <h2 className="text-2xl font-bold mb-4">Submit Jawaban?</h2>
                 <p className="text-lg mb-6">
                   Pastikan semua jawaban sudah benar sebelum disubmit.
