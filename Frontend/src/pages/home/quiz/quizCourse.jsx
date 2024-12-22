@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
 const Guide = ({ onNext }) => (
-  <div className="h-screen px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
-    <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-6">PETUNJUK PENGERJAAN EVALUASI</h1>
-    <div className="max-w-2xl text-lg sm:text-xl md:text-2xl bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
+  <div className="h-screen px-12 sm:px-8 md:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
+    <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-center font-bold mb-6">
+      PETUNJUK PENGERJAAN EVALUASI
+    </h1>
+    <div className="max-w-xl sm:max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl bg-gray-900 p-4 sm:p-6 md:p-8 rounded-lg shadow-lg space-y-4">
       <p>1. Bacalah setiap soal dengan cermat sebelum menjawab.</p>
       <p>2. Pilih jawaban yang paling tepat untuk setiap soal pilihan ganda.</p>
       <p>3. Tuliskan jawaban Anda pada lembar jawaban yang telah disediakan.</p>
@@ -13,7 +15,7 @@ const Guide = ({ onNext }) => (
     </div>
     <button
       onClick={onNext}
-      className="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full text-xl font-semibold shadow-lg"
+      className="mt-8 px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-purple-600 hover:bg-purple-700 rounded-full text-lg sm:text-xl md:text-2xl font-semibold shadow-lg"
     >
       Mulai Evaluasi
     </button>
@@ -29,20 +31,19 @@ const Question = ({
   selectedOption,
   onOptionChange,
 }) => (
-  <form className="text-center text-white space-y-12">
-    {/* Nomor Soal */}
+  <form className="text-center text-white space-y-6 sm:space-y-8 md:space-y-10">
     <div className="mb-4">
-      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">Soal {number}</h2>
+      <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
+        Soal {number}
+      </h2>
     </div>
-
-    {/* Teks Soal */}
     {text && (
       <div className="mb-4">
-        <p className="text-lg sm:text-xl md:text-2xl font-medium">{text}</p>
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium">
+          {text}
+        </p>
       </div>
     )}
-
-    {/* Gambar Soal */}
     <div className="mb-4 flex justify-center">
       {imageSrc && (
         <img
@@ -52,17 +53,15 @@ const Question = ({
         />
       )}
     </div>
-
-    {/* Pilihan Jawaban */}
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 flex-wrap">
       {options.map((option, index) => (
         <label
           key={index}
-          className={`cursor-pointer rounded-lg p-2 sm:p-3 md:p-4 shadow-md flex items-center justify-center text-sm md:text-lg font-semibold transition duration-200 
-            ${selectedOption === option
+          className={`cursor-pointer rounded-lg p-2 sm:p-3 md:p-4 shadow-md flex items-center justify-center text-sm md:text-lg font-semibold transition duration-200 ${
+            selectedOption === option
               ? "bg-pink-600 text-white"
               : "bg-blue-800 hover:bg-pink-400 hover:text-white"
-            }`}
+          }`}
         >
           <input
             type="radio"
@@ -77,18 +76,20 @@ const Question = ({
         </label>
       ))}
     </div>
-
-
   </form>
 );
 
 const StartPage = ({ onStart }) => (
   <div className="h-screen flex flex-col items-center justify-center text-white bg-gradient-to-r from-cyan-500 to-blue-500">
-    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Quiz</h1>
-    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Materi 1</h1>
+    <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+      Quiz
+    </h1>
+    <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+      Materi 1
+    </h1>
     <button
       onClick={onStart}
-      className="text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-2 focus:outline-none focus:ring-purple-200 font-medium rounded-full px-16 sm:px-20 md:px-24 py-2.5"
+      className="text-lg sm:text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-2 focus:outline-none focus:ring-purple-200 font-medium rounded-full px-10 sm:px-16 md:px-20 lg:px-24 py-2 sm:py-3 md:py-4"
     >
       Mulai
     </button>
@@ -96,7 +97,7 @@ const StartPage = ({ onStart }) => (
 );
 
 const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoToPembahasan }) => (
-  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 py-6 px-4">
+  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 p-12">
     <div className="w-full max-w-lg flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-lg">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Hasil Quiz</h2>
       <p className="text-lg sm:text-xl md:text-2xl mb-6">Skor Anda: {score} / {questions.length}</p>

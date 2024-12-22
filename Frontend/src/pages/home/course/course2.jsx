@@ -71,7 +71,7 @@ const Layout4 = () => (
 const StartPage = ({ onStart }) => (
   <div className="h-screen flex flex-col items-center justify-center text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium text-sm text-center mb-2">
     <h1 className="text-6xl md:text-8xl font-bold mb-4">02</h1>
-    <h1 className="text-6xl md:text-8xl font-bold mb-4">Operator Bilangan</h1>
+    <h1 className="text-6xl md:text-8xl font-bold mb-8">Operator Bilangan</h1>
     <button
       onClick={onStart}
       className="text-xl md:text-2xl text-white bg-gradient-to-r from-yellow-400 to-lime-300 hover:bg-gradient-to-l hover:from-yellow-400 hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-full px-16 md:px-24 py-2.5 text-center me-2 mb-2"
@@ -111,7 +111,7 @@ const Course2 = () => {
   const ActivePage = pages[currentPage].component;
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-slate-950">
+    <div className="h-screen flex flex-col items-center justify-center bg-slate-950 px-8">
       <div className="bg-white shadow-lg rounded-lg m-8 p-8 md:p-8 w-full max-w-4xl text-center overflow-auto">
         <ActivePage />
 

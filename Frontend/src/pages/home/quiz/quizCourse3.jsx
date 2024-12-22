@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
 const Guide = ({ onNext }) => (
-  <div className="h-screen px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
-    <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-6">PETUNJUK PENGERJAAN EVALUASI</h1>
-    <div className="max-w-2xl text-lg sm:text-xl md:text-2xl bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
+  <div className="h-screen px-12 sm:px-12 lg:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
+    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold mb-6">PETUNJUK PENGERJAAN EVALUASI</h1>
+    <div className="max-w-2xl text-lg sm:text-xl md:text-2xl lg:text-3xl bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
       <p>1. Bacalah setiap soal dengan cermat sebelum menjawab.</p>
       <p>2. Pilih jawaban yang paling tepat untuk setiap soal pilihan ganda.</p>
       <p>3. Tuliskan jawaban Anda pada lembar jawaban yang telah disediakan.</p>
@@ -32,7 +32,7 @@ const Question = ({
   <form className="text-center text-white space-y-12">
     {/* Nomor Soal */}
     <div className="mb-4">
-      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">Soal {number}</h2>
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Soal {number}</h2>
     </div>
 
     {/* Teks Soal */}
@@ -58,7 +58,7 @@ const Question = ({
       {options.map((option, index) => (
         <label
           key={index}
-          className={`cursor-pointer rounded-lg p-2 sm:p-3 md:p-4 shadow-md flex items-center justify-center text-sm md:text-lg font-semibold transition duration-200 
+          className={`cursor-pointer rounded-lg p-2 sm:p-3 md:p-4 shadow-md flex items-center justify-center text-sm sm:text-base md:text-lg font-semibold transition duration-200 
             ${selectedOption === option
               ? "bg-pink-600 text-white"
               : "bg-blue-800 hover:bg-pink-400 hover:text-white"
@@ -77,8 +77,6 @@ const Question = ({
         </label>
       ))}
     </div>
-
-
   </form>
 );
 
@@ -96,7 +94,7 @@ const StartPage = ({ onStart }) => (
 );
 
 const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoToPembahasan }) => (
-  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 py-6 px-4">
+  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 p-12">
     <div className="w-full max-w-lg flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-lg">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Hasil Quiz</h2>
       <p className="text-lg sm:text-xl md:text-2xl mb-6">Skor Anda: {score} / {questions.length}</p>

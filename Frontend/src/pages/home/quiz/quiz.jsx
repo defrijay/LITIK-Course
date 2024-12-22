@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Guide = ({ onNext }) => (
-  <div className="h-screen px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
+  <div className="h-screen px-12 sm:px-10 md:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
     <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-6">PETUNJUK PENGERJAAN EVALUASI</h1>
     <div className="max-w-2xl text-lg sm:text-xl md:text-2xl bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
       <p>1. Bacalah setiap soal dengan cermat sebelum menjawab.</p>
@@ -28,20 +28,15 @@ const Question = ({
   selectedOption,
   onOptionChange,
 }) => (
-  <form className="text-center text-white space-y-12">
-    {/* Nomor Soal */}
+<form className="text-center text-white space-y-12">
     <div className="mb-4">
-      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">Soal {number}</h2>
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">Soal {number}</h2>
     </div>
-
-    {/* Teks Soal */}
     {text && (
       <div className="mb-4">
         <p className="text-lg sm:text-xl md:text-2xl font-medium">{text}</p>
       </div>
     )}
-
-    {/* Gambar Soal */}
     <div className="mb-4 flex justify-center">
       {imageSrc && (
         <img
@@ -51,8 +46,6 @@ const Question = ({
         />
       )}
     </div>
-
-    {/* Pilihan Jawaban */}
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 flex-wrap">
       {options.map((option, index) => (
         <label
@@ -76,8 +69,6 @@ const Question = ({
         </label>
       ))}
     </div>
-
-
   </form>
 );
 
@@ -95,7 +86,7 @@ const StartPage = ({ onStart }) => (
 );
 
 const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoToPembahasan }) => (
-  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 py-6 px-4">
+  <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 p-12">
     <div className="w-full max-w-lg flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-lg">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Hasil Quiz</h2>
       <p className="text-lg sm:text-xl md:text-2xl mb-6">Skor Anda: {score} / {questions.length}</p>
@@ -332,7 +323,7 @@ const Quiz = () => {
       {currentPage === null ? (
         <StartPage onStart={handleStart} />
       ) : (
-        <div className="h-screen flex flex-col items-center justify-center bg-gray-900 px-12">
+        <div className="h-screen flex flex-col items-center justify-center bg-gray-900 px-12 py-96">
           <div className="bg-blue-950 shadow-lg rounded-lg p-8 w-full max-w-4xl">
             <div className="flex justify-center mb-6 gap-2">
               {questions.map((_, index) => (

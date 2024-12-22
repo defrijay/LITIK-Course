@@ -291,7 +291,7 @@ const Course = () => {
   const ActivePage = pages[currentPage].component;
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-slate-950">
+    <div className="h-screen flex flex-col items-center justify-center bg-slate-950 px-8">
       <div className="bg-white shadow-lg rounded-lg m-8 p-8 w-full max-w-4xl text-center overflow-auto">
         <ActivePage /> {/* Menampilkan layout berdasarkan halaman aktif */}
 
