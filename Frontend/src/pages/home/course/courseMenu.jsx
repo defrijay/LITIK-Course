@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const CourseMenu = () => {
   return (
-    <section className="flex-col bg-gray-50 dark:bg-slate-950 h-screen flex items-center justify-center px-6 sm:px-12 md:px-20 lg:px-32">
-      <div className="h-screen gap-4 flex flex-col items-center justify-center space-y-8 dark:bg-slate-950 text-white">
+    <section className="flex-col bg-slate-950 h-screen flex items-center justify-center px-6 sm:px-12 md:px-20 lg:px-32">
+      <div className="h-screen gap-4 flex flex-col items-center justify-center space-y-8 bg-slate-950 text-white">
         {/* Judul */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-center">
           Course Menu
