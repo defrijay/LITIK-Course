@@ -15,7 +15,7 @@ const Onboarding = () => {
       </h1>
 
       {/* Deskripsi */}
-      <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-black bg-slate-100 rounded-xl p-4">
+      <h1 className="text-base text-center sm:text-lg md:text-xl lg:text-2xl font-semibold text-black bg-slate-100 rounded-xl p-4">
         Komponen Dasar Program Prosedural Bahasa C
       </h1>
 
