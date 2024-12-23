@@ -24,7 +24,7 @@ const Menu = () => {
               <h2 className="text-base sm:text-lg md:text-xl font-semibold text-purple-600">
                 Menu 1 :
               </h2>
-              <p className="text-sm sm:text-base md:text-lg">CP, ATP</p>
+              <p className="text-sm sm:text-base md:text-lg">CP, TP</p>
             </div>
           </Link>
 
