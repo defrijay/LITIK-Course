@@ -146,7 +146,7 @@ const Sidebar = ({ children }) => {
                                 </ul>
                             )}
                         </li>
-                        <li>
+                        {/* <li>
                             <Link
                                 to="/user"
                                 className="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group"
@@ -157,7 +157,7 @@ const Sidebar = ({ children }) => {
 
                                 <span className="ms-3">Siswa</span>
                             </Link>
-                        </li>
+                        </li> */}
                         {/* More sidebar items */}
                     </ul>
                 </div>
