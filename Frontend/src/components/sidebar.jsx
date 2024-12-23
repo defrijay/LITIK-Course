@@ -130,7 +130,7 @@ const Sidebar = ({ children }) => {
                                     </li>
                                     <li>
                                         <Link to="/outcomes" className="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">
-                                            Menu 1 (CP, ATP)
+                                            Menu 1 (CP, TP)
                                         </Link>
                                     </li>
                                     <li>
