@@ -42,6 +42,22 @@ const Sidebar = ({ children }) => {
                                 </svg>
                             </button>
                         </div>
+                        {/* User Profile Dropdown */}
+                        <div className="flex items-center">
+                            <div className="flex items-center ms-3">
+                                <div>
+                                    <button type="button" className="flex text-sm px-2 py-2 focus:ring-4 focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                                        <span className="sr-only">Open user menu</span>
+                                        <img
+                                            className="h-8 sm:h-10 md:h-12"  // Adjusts size based on screen width
+                                            src="/assets/upi-logo.png"
+                                            alt="user photo"
+                                        />
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -73,34 +89,34 @@ const Sidebar = ({ children }) => {
                             </Link>
                         </li>
                         <li>
-                            <button 
-                                type="button" 
-                                onClick={toggleDropdown} 
-                                className="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group text-white hover:bg-gray-700" 
+                            <button
+                                type="button"
+                                onClick={toggleDropdown}
+                                className="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group text-white hover:bg-gray-700"
                             >
-                                <svg 
-                                    className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" 
-                                    aria-hidden="true" 
-                                    xmlns="http://www.w3.org/2000/svg" 
-                                    fill="currentColor" 
+                                <svg
+                                    className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
                                     viewBox="0 0 18 18"
                                 >
                                     <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                                 </svg>
                                 <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Menu</span>
-                                <svg 
-                                    className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
-                                    aria-hidden="true" 
-                                    xmlns="http://www.w3.org/2000/svg" 
-                                    fill="none" 
+                                <svg
+                                    className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
                                     viewBox="0 0 10 6"
                                 >
-                                    <path 
-                                        stroke="currentColor" 
-                                        strokeLinecap="round" 
-                                        strokeLinejoin="round" 
-                                        strokeWidth="2" 
-                                        d="m1 1 4 4 4-4" 
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="m1 1 4 4 4-4"
                                     />
                                 </svg>
                             </button>
