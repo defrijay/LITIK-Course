@@ -1,7 +1,17 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <>
             {/* Navbar */}
@@ -11,8 +21,7 @@ const Sidebar = ({ children }) => {
                         <div className="flex items-center justify-start rtl:justify-end">
                             {/* Button to open sidebar */}
                             <button
-                                data-drawer-target="logo-sidebar"
-                                data-drawer-toggle="logo-sidebar"
+                                onClick={toggleSidebar}
                                 aria-controls="logo-sidebar"
                                 type="button"
                                 className="inline-flex items-center p-2 text-sm rounded-lg sm:hidden focus:outline-none focus:ring-2 text-gray-400 hover:bg-gray-700 focus:ring-gray-600"
@@ -32,22 +41,6 @@ const Sidebar = ({ children }) => {
                                     ></path>
                                 </svg>
                             </button>
-
-                        </div>
-                        {/* User Profile Dropdown */}
-                        <div className="flex items-center">
-                            <div className="flex items-center ms-3">
-                                <div>
-                                    <button type="button" className="flex text-sm px-2 py-2 focus:ring-4 focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                                        <span className="sr-only">Open user menu</span>
-                                        <img
-                                            className="h-10"
-                                            src="/assets/upi-logo.png"
-                                            alt="user photo"
-                                        />
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,7 +49,7 @@ const Sidebar = ({ children }) => {
             {/* Sidebar */}
             <aside
                 id="logo-sidebar"
-                className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full border-r sm:translate-x-0 bg-gray-800 border-gray-700"
+                className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} border-r sm:translate-x-0 bg-gray-800 border-gray-700`}
                 aria-label="Sidebar"
             >
                 <div className="h-full px-3 pb-4 overflow-y-auto bg-gray-800">
@@ -80,29 +73,61 @@ const Sidebar = ({ children }) => {
                             </Link>
                         </li>
                         <li>
-                            <button type="button" class="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group text-white hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                                <svg class="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                            <button 
+                                type="button" 
+                                onClick={toggleDropdown} 
+                                className="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group text-white hover:bg-gray-700" 
+                            >
+                                <svg 
+                                    className="flex-shrink-0 w-5 h-5 transition duration-75 text-gray-400 group-hover:text-white" 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="currentColor" 
+                                    viewBox="0 0 18 18"
+                                >
                                     <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                                 </svg>
-                                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Menu</span>
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Menu</span>
+                                <svg 
+                                    className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
+                                    aria-hidden="true" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    fill="none" 
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path 
+                                        stroke="currentColor" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        strokeWidth="2" 
+                                        d="m1 1 4 4 4-4" 
+                                    />
                                 </svg>
                             </button>
-                            <ul id="dropdown-example" class="hidden py-2 space-y-2">
-                                <li>
-                                    <Link to="/menu" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">Menu</Link>
-                                </li>
-                                <li>
-                                    <Link to="/outcomes" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">Menu 1 (CP, ATP)</Link>
-                                </li>
-                                <li>
-                                    <Link to="/course-menu" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">Menu 2 (Materi)</Link>
-                                </li>
-                                <li>
-                                    <Link to="/quiz" class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">Menu 3 (Evaluasi)</Link>
-                                </li>
-                            </ul>
+                            {isOpen && (
+                                <ul className="py-2 space-y-2">
+                                    <li>
+                                        <Link to="/menu" className="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">
+                                            Menu
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/outcomes" className="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">
+                                            Menu 1 (CP, ATP)
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/course-menu" className="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">
+                                            Menu 2 (Materi)
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/quiz" className="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 group text-white hover:bg-gray-700">
+                                            Menu 3 (Evaluasi)
+                                        </Link>
+                                    </li>
+                                </ul>
+                            )}
                         </li>
                         {/* More sidebar items */}
                     </ul>
