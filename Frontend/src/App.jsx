@@ -22,6 +22,7 @@ import { IdentityProvider } from './context/IdentityContext';
 import QuizCourse from './pages/home/quiz/quizCourse.jsx';
 import QuizCourse2 from './pages/home/quiz/quizCourse2.jsx';
 import QuizCourse3 from './pages/home/quiz/quizCourse3.jsx';
+import UserList from '../admin/userList.jsx';
 
 const App = () => {
   return (
@@ -46,8 +47,9 @@ const App = () => {
             <Route path="/quiz-course" element={<QuizCourse />} />
             <Route path="/quiz-course2" element={<QuizCourse2 />} />
             <Route path="/quiz-course3" element={<QuizCourse3 />} />
+            <Route path="/user" element={<UserList />} />
             <Route path="/quiz" element={<Quiz />} />
-            {/* <Route path="/evaluation" element={<Evaluation score={5} totalQuestions={7} />} /> */}
+            {/* <Route path="/evaluation" element={<Evaluation score={5} totalQuestions={7} />} />
             {/* Rute yang dilindungi */}
             {/* <Route
               path="/quiz"

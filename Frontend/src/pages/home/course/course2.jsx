@@ -114,9 +114,9 @@ const Layout5 = () => (
       <div className="bg-white p-6 rounded-lg shadow-lg flex-col items-center justify-center">
         <img src="/assets/course/3.kode_puts().png" alt="gambar" className='h-40' />
       </div>
-      <h1 className="text-2xl font-bold text-gray-700 text-start">Teknologi</h1>
+      <h1 className="text-2xl font-bold text-gray-700 text-start">Output</h1>
       <div className="bg-white p-6 rounded-lg shadow-lg flex-col items-center justify-center text-start">
-        <p>Tanpa menggunakan \n</p>
+        <p>Tanpa menggunakan \n</p><br />
         <img src="/assets/course/4.teknologi.png" alt="gambar" className='h-40' />
       </div>
     </div>

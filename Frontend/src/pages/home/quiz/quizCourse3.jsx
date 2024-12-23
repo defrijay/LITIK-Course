@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Guide = ({ onNext }) => (
   <div className="h-screen px-12 sm:px-8 md:px-16 lg:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
-    <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-6">PETUNJUK PENGERJAAN EVALUASI</h1>
+    <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-6">PETUNJUK PENGERJAAN QUIZ</h1>
     <div className="max-w-2xl text-lg sm:text-xl md:text-2xl bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
       <p>1. Bacalah setiap soal dengan cermat sebelum menjawab.</p>
       <p>2. Pilih jawaban yang paling tepat untuk setiap soal pilihan ganda.</p>
@@ -15,7 +15,7 @@ const Guide = ({ onNext }) => (
       onClick={onNext}
       className="mt-8 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full text-xl font-semibold shadow-lg"
     >
-      Mulai Evaluasi
+      Mulai Quiz
     </button>
   </div>
 );

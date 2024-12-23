@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Guide = ({ onNext }) => (
   <div className="h-screen px-12 sm:px-8 md:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
     <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-center font-bold mb-6">
-      PETUNJUK PENGERJAAN EVALUASI
+      PETUNJUK PENGERJAAN QUIZ
     </h1>
     <div className="max-w-xl sm:max-w-2xl text-base sm:text-lg md:text-xl lg:text-2xl bg-gray-900 p-4 sm:p-6 md:p-8 rounded-lg shadow-lg space-y-4">
       <p>1. Bacalah setiap soal dengan cermat sebelum menjawab.</p>
@@ -17,7 +17,7 @@ const Guide = ({ onNext }) => (
       onClick={onNext}
       className="mt-8 px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-purple-600 hover:bg-purple-700 rounded-full text-lg sm:text-xl md:text-2xl font-semibold shadow-lg"
     >
-      Mulai Evaluasi
+      Mulai Quiz
     </button>
   </div>
 );

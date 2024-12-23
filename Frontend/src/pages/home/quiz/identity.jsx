@@ -8,18 +8,23 @@ const Identity = () => {
     const [kelas, setKelas] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
-    const { setIdentityFilled } = useIdentity();
+    const { setIdentity } = useIdentity(); // Menggunakan Context untuk menyimpan identitas
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/users', { nama, kelas });
+            // Mengirim POST request untuk membuat user baru
+            const response = await axios.post('http://localhost:5000/api/users', { nama, kelas });
+            
+            // Menyimpan identitas ke context
+            setIdentity({ nama, kelas, id: response.data.id });
+
+            // Reset pesan dan arahkan ke halaman quiz
             setMessage('');
-            setIdentityFilled(true); // Tandai identitas telah diisi
-            navigate('/quiz'); // Arahkan ke halaman /quiz
+            navigate('/quiz');
         } catch (error) {
             console.error('Error:', error);
-            setMessage('Gagal menyimpan data');
+            setMessage('Gagal menyimpan data. Pastikan server berjalan dengan baik.');
         }
     };
 
