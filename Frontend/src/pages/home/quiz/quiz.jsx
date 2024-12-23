@@ -74,7 +74,7 @@ const Question = ({
 
 const StartPage = ({ onStart }) => (
   <div className="h-screen flex flex-col items-center justify-center text-white bg-gradient-to-r from-cyan-500 to-blue-500">
-    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">04</h1>
+    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">03</h1>
     <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4">Evaluasi</h1>
     <button
       onClick={onStart}
