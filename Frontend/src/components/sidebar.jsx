@@ -41,7 +41,7 @@ const Sidebar = ({ children }) => {
                                     <button type="button" className="flex text-sm px-2 py-2 focus:ring-4 focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                         <span className="sr-only">Open user menu</span>
                                         <img
-                                            className="h-6"
+                                            className="h-10"
                                             src="/assets/upi-logo.png"
                                             alt="user photo"
                                         />
