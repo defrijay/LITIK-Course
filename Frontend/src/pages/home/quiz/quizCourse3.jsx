@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 
 const Guide = ({ onNext }) => (
-  <div className="h-screen px-12 sm:px-12 lg:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
-    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold mb-6">PETUNJUK PENGERJAAN EVALUASI</h1>
-    <div className="max-w-2xl text-lg sm:text-xl md:text-2xl lg:text-3xl bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
+  <div className="h-screen px-12 sm:px-8 md:px-16 lg:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
+    <h1 className="text-2xl sm:text-3xl md:text-4xl text-center font-bold mb-6">PETUNJUK PENGERJAAN EVALUASI</h1>
+    <div className="max-w-2xl text-lg sm:text-xl md:text-2xl bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
       <p>1. Bacalah setiap soal dengan cermat sebelum menjawab.</p>
       <p>2. Pilih jawaban yang paling tepat untuk setiap soal pilihan ganda.</p>
       <p>3. Tuliskan jawaban Anda pada lembar jawaban yang telah disediakan.</p>
@@ -19,6 +19,7 @@ const Guide = ({ onNext }) => (
     </button>
   </div>
 );
+
 
 
 const Question = ({
