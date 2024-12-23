@@ -8,7 +8,7 @@ const Guide = ({ onNext }) => (
       <p>1. Bacalah setiap soal dengan cermat sebelum menjawab.</p>
       <p>2. Pilih jawaban yang paling tepat untuk setiap soal pilihan ganda.</p>
       <p>3. Tuliskan jawaban Anda pada lembar jawaban yang telah disediakan.</p>
-      <p>4. Kerjakan soal essay dengan jelas dan sesuai instruksi.</p>
+      <p>4. Kerjakan soal pilihan ganda sesuai instruksi.</p>
       <p>5. Pastikan semua soal telah dijawab sebelum menyerahkan hasil evaluasi.</p>
     </div>
     <button
