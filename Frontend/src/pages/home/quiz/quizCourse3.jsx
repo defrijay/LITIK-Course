@@ -9,7 +9,7 @@ const Guide = ({ onNext }) => (
       <p>2. Pilih jawaban yang paling tepat untuk setiap soal pilihan ganda.</p>
       <p>3. Tuliskan jawaban Anda pada lembar jawaban yang telah disediakan.</p>
       <p>4. Kerjakan soal pilihan ganda sesuai instruksi.</p>
-      <p>5. Pastikan semua soal telah dijawab sebelum menyerahkan hasil evaluasi.</p>
+      <p>5. Pastikan semua soal telah dijawab sebelum menyerahkan hasil quiz.</p>
     </div>
     <button
       onClick={onNext}
