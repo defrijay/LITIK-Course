@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Routes
-app.use("/api", userRoutes); // Tambahkan prefix /api untuk endpoint
+app.use("/api", userRoutes); 
 
 // Default route
 app.get("/", (req, res) => res.send("Express API running on Vercel"));

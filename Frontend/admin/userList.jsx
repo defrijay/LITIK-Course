@@ -10,10 +10,13 @@ const UserList = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/users');
+                // Mengambil URL backend dari .env
+                const backendUrl = process.env.REACT_APP_BACKEND_URL;
+                const response = await axios.get(`${backendUrl}/users`);
                 setUsers(response.data); // Menyimpan data pengguna ke state
                 setLoading(false);
             } catch (err) {
+                console.error('Error:', err);
                 setError('Gagal mengambil data pengguna');
                 setLoading(false);
             }
@@ -22,8 +25,8 @@ const UserList = () => {
         fetchUsers();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    if (loading) return <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">Loading...</div>;
+    if (error) return <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">{error}</div>;
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
