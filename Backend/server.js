@@ -1,5 +1,5 @@
 const express = require("express");
-const userRoutes = require("./routes/userRoutes"); 
+const userRoutes = require("./routes/userRoutes");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -8,7 +8,12 @@ const app = express();
 app.use(bodyParser.json());
 
 // Routes
-app.use("/api", userRoutes); 
+app.use("/api", userRoutes);
+
+// Default handler for /api
+app.get("/api", (req, res) => {
+  res.send("Welcome to the API endpoint");
+});
 
 // Default route
 app.get("/", (req, res) => res.send("Express API running on Vercel"));
