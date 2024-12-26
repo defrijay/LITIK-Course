@@ -12,7 +12,7 @@ const UserList = () => {
             try {
                 // Mengambil URL backend dari .env
                 const backendUrl = process.env.REACT_APP_BACKEND_URL;
-                const response = await axios.get(`${backendUrl}/api/users`);
+                const response = await axios.get(`https://litik-course-be.vercel.app/api/users`);
                 setUsers(response.data); // Menyimpan data pengguna ke state
                 setLoading(false);
             } catch (err) {
