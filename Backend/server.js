@@ -1,10 +1,18 @@
 const express = require("express");
+const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const bodyParser = require("body-parser");
 
 const app = express();
 
-// Middleware
+// Middleware CORS
+app.use(cors({
+  origin: "https://litik-course.vercel.app", // Origin frontend yang diizinkan
+  methods: ["GET", "POST", "PUT", "DELETE"], // HTTP methods yang diizinkan
+  credentials: true, // Jika menggunakan cookie atau header otentikasi
+}));
+
+// Middleware lainnya
 app.use(bodyParser.json());
 
 // Routes
