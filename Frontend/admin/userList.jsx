@@ -12,7 +12,7 @@ const UserList = () => {
             try {
                 // Mengambil URL backend dari .env
                 const backendUrl = process.env.REACT_APP_BACKEND_URL;
-                const response = await axios.get(`${backendUrl}/users`);
+                const response = await axios.get(`${backendUrl}/api/users`);
                 setUsers(response.data); // Menyimpan data pengguna ke state
                 setLoading(false);
             } catch (err) {
