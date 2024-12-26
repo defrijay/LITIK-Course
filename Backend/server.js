@@ -1,8 +1,17 @@
 const express = require("express");
+const userRoutes = require("./routes/userRoutes"); 
+const bodyParser = require("body-parser");
+
 const app = express();
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+// Middleware
+app.use(bodyParser.json());
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+// Routes
+app.use("/api", userRoutes); // Tambahkan prefix /api untuk endpoint
 
+// Default route
+app.get("/", (req, res) => res.send("Express API running on Vercel"));
+
+// Export app for Vercel
 module.exports = app;

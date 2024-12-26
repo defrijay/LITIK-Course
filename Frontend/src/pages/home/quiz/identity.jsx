@@ -8,15 +8,16 @@ const Identity = () => {
     const [kelas, setKelas] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
-    const { setIdentity } = useIdentity(); // Menggunakan Context untuk menyimpan identitas
+    const { setIdentity } = useIdentity();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Mengirim POST request untuk membuat user baru
-            const response = await axios.post('http://localhost:5000/api/users', { nama, kelas });
-            
-            // Menyimpan identitas ke context
+            // Ambil URL dari .env
+            const backendUrl = process.env.REACT_APP_BACKEND_URL;
+            const response = await axios.post(`${backendUrl}/users`, { nama, kelas });
+
+            // Simpan identitas ke context
             setIdentity({ nama, kelas, id: response.data.id });
 
             // Reset pesan dan arahkan ke halaman quiz
