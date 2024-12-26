@@ -47,19 +47,19 @@ const App = () => {
             <Route path="/quiz-course" element={<QuizCourse />} />
             <Route path="/quiz-course2" element={<QuizCourse2 />} />
             <Route path="/quiz-course3" element={<QuizCourse3 />} />
-            {/* <Route path="/user" element={<UserList />} /> */}
-            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/user" element={<UserList />} />
+            {/* <Route path="/quiz" element={<Quiz />} /> */}
             {/* <Route path="/identity" element={<Identity />} /> */}
             {/* <Route path="/evaluation" element={<Evaluation score={5} totalQuestions={7} />} />
             {/* Rute yang dilindungi */}
-            {/* <Route
+            <Route
               path="/quiz"
               element={
                 <ProtectedRoute>
                   <Quiz />
                 </ProtectedRoute>
               }
-            /> */}
+            />
             {/* <Route
               path="/quiz2"
               element={
