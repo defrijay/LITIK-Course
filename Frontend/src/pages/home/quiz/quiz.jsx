@@ -85,15 +85,18 @@ const StartPage = ({ onStart }) => (
   </div>
 );
 
-const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoToPembahasan }) => (
+const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, pembahasan }) => (
   <div className="min-h-screen flex flex-col items-center justify-start bg-gray-900 p-12">
     <div className="w-full max-w-lg flex flex-col items-center p-6 bg-gray-800 text-white rounded-lg shadow-lg">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Hasil Quiz</h2>
       <p className="text-lg sm:text-xl md:text-2xl mb-6">Skor Anda: {score} / {questions.length}</p>
       <div className="w-full space-y-6">
         {questions.map((question, index) => (
-          <div key={index}>
+          <div key={index} className="mb-6">
             <h3 className="font-semibold text-md md:text-lg mb-2">Soal {question.number}</h3>
+
+            {/* Menampilkan teks soal */}
+            <p className="text-lg text-gray-300 mb-4">{question.text}</p>
 
             {/* Menampilkan gambar soal */}
             <div className="mb-4 flex justify-center">
@@ -121,15 +124,14 @@ const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoT
             <p className="font-medium text-green-500">
               Jawaban yang Benar: {correctAnswers[question.number]}
             </p>
+
+            {/* Menampilkan pembahasan */}
+            <p className="text-lg text-gray-300 mt-4">
+              Pembahasan: <span className="italic text-sm">{pembahasan[question.number]}</span>
+            </p>
           </div>
         ))}
       </div>
-      {/* <button
-        onClick={onGoToPembahasan}
-        className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Lihat Pembahasan
-      </button> */}
       <button
         onClick={onFinish}
         className="mt-6 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
@@ -193,9 +195,6 @@ const Pembahasan = ({ answers, correctAnswers, questions, pembahasan, onBackToSt
     </div>
   </div>
 );
-
-
-
 
 const Quiz = () => {
   const [currentPage, setCurrentPage] = useState(null);
@@ -263,8 +262,6 @@ const Quiz = () => {
     }));
   };
 
-
-
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -305,8 +302,18 @@ const Quiz = () => {
   }
 
   if (showResults) {
-    return <ResultPage answers={answers} questions={questions} correctAnswers={correctAnswers} score={score} onFinish={onFinish} />;
+    return (
+      <ResultPage
+        answers={answers}
+        questions={questions}
+        correctAnswers={correctAnswers}
+        pembahasan={pembahasan}
+        score={score}
+        onFinish={onFinish}
+      />
+    );
   }
+  
 
   if (isGuideVisible) {
     return <Guide onNext={handleNextFromGuide} />;
