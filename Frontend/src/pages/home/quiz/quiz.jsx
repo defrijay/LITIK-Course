@@ -256,16 +256,17 @@ const Quiz = () => {
 
   const handleSubmitScore = async () => {
     try {
-      // Ambil ID terakhir dari database
       const lastIdResponse = await fetch(`https://litik-course-be.vercel.app/api/users/last`);
       if (!lastIdResponse.ok) {
-        throw new Error("Failed to fetch the last user ID");
+        throw new Error(`Failed to fetch the last user ID: ${lastIdResponse.statusText}`);
       }
   
       const lastUserData = await lastIdResponse.json();
-      const lastUserId = lastUserData.id; // Pastikan respons memiliki format { id: ... }
+      const lastUserId = lastUserData.id;
+      if (!lastUserId) {
+        throw new Error("User ID not found in the response");
+      }
   
-      // Kirim skor ke user dengan ID terakhir
       const scoreResponse = await fetch(`https://litik-course-be.vercel.app/api/users/${lastUserId}/score`, {
         method: "PUT",
         headers: {
@@ -275,15 +276,17 @@ const Quiz = () => {
       });
   
       if (!scoreResponse.ok) {
-        throw new Error("Failed to update score");
+        const errorDetails = await scoreResponse.text();
+        throw new Error(`Failed to update score: ${errorDetails}`);
       }
   
       const updatedData = await scoreResponse.json();
-      console.log("Score updated:", updatedData.message); // Pesan sukses
+      console.log("Score updated successfully:", updatedData.message);
     } catch (error) {
       console.error("Error updating score:", error.message);
     }
   };
+  
   
   
   // Panggil fungsi ini setelah submit
