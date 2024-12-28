@@ -261,7 +261,7 @@ const Quiz = () => {
     }
   
     try {
-      const response = await fetch(`https://litik-course-be.vercel.app/api/users/${identity.id}/score`, {
+      const response = await fetch(`https://litik-course-be.vercel.app/api/users/${identity.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
