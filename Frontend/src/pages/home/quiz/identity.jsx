@@ -6,7 +6,6 @@ import { useIdentity } from '../../../context/IdentityContext';
 const Identity = () => {
     const [nama, setNama] = useState('');
     const [kelas, setKelas] = useState('');
-    const [skor, setSkor] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const { setIdentity } = useIdentity();
@@ -16,10 +15,10 @@ const Identity = () => {
         try {
             // Ambil URL dari .env
             const backendUrl = process.env.REACT_APP_BACKEND_URL;
-            const response = await axios.post(`https://litik-course-be.vercel.app/api/users`, { nama, kelas, skor });
+            const response = await axios.post(`https://litik-course-be.vercel.app/api/users`, { nama, kelas });
 
             // Simpan identitas ke context
-            setIdentity({ nama, kelas, skor, id: response.data.id });
+            setIdentity({ nama, kelas, id: response.data.id });
 
             // Reset pesan dan arahkan ke halaman quiz
             setMessage('');
