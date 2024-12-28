@@ -12,6 +12,9 @@ app.use(cors({
   credentials: true, // Jika menggunakan cookie atau header otentikasi
 }));
 
+// Menangani permintaan OPTIONS
+app.options('*', cors());
+
 // Middleware lainnya
 app.use(bodyParser.json());
 

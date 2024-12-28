@@ -14,8 +14,8 @@ const Identity = () => {
         e.preventDefault();
         try {
             // Ambil URL dari .env
-            const backendUrl = process.env.REACT_APP_BACKEND_URL;
-            const response = await axios.post(`https://litik-course-be.vercel.app/api/users`, { nama, kelas });
+            const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://litik-course-be.vercel.app';
+            const response = await axios.post(`${backendUrl}/api/users`, { nama, kelas });
 
             // Simpan identitas ke context
             setIdentity({ nama, kelas, id: response.data.id });
