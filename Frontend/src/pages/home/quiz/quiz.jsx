@@ -256,28 +256,29 @@ const Quiz = () => {
 
   const handleSubmitScore = async () => {
     if (!identity || !identity.id) {
-      console.error('User ID not found');
+      console.error("User ID tidak ditemukan di context.");
       return;
     }
-  
+
+    const userId = identity.id; // Ambil ID pengguna dari context
+
     try {
-      const response = await fetch(`https://litik-course-be.vercel.app/api/users/${identity.id}`, {
-        method: 'PUT',
+      const response = await fetch(`https://litik-course-be.vercel.app/api/users/${userId}/score`, {
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ score }),
       });
-  
+
       if (!response.ok) {
-        const errorData = await response.json(); // Parsing error response dari backend
-        throw new Error(`Error ${response.status}: ${errorData.message || 'Failed to update score'}`);
+        throw new Error("Failed to update score");
       }
-  
+
       const data = await response.json();
-      console.log(data.message); // Success message
+      console.log(data.message); // Pesan sukses
     } catch (error) {
-      console.error('Error updating score:', error.message);
+      console.error("Error updating score:", error.message);
     }
   };
   
