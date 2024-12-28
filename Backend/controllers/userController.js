@@ -14,11 +14,12 @@ const getUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   const { id } = req.params;
   try {
-    const [results] = await db.query('SELECT * FROM users WHERE id = ?', [id]);
+    const [results] = await db.query('SELECT id FROM users ORDER BY id DESC LIMIT 1');
+    // console.log(results); // Debugging untuk melihat hasil query
     if (results.length === 0) {
-      return res.status(404).json({ message: "User gada" });
+      return res.status(404).json({ message: "No users found" });
     }
-    res.status(200).json(results[0]);
+    res.status(200).json({ id: results[0].id });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
