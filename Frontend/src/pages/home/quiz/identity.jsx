@@ -15,10 +15,10 @@ const Identity = () => {
         try {
             // Ambil URL dari .env
             const backendUrl = process.env.REACT_APP_BACKEND_URL;
-            const response = await axios.post(`https://litik-course-be.vercel.app/api/users`, { nama, kelas });
+            const response = await axios.post(`https://litik-course-be.vercel.app/api/users`, { nama, kelas, skor });
 
             // Simpan identitas ke context
-            setIdentity({ nama, kelas, id: response.data.id });
+            setIdentity({ nama, kelas, skor, id: response.data.id });
 
             // Reset pesan dan arahkan ke halaman quiz
             setMessage('');
