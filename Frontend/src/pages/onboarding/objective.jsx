@@ -11,19 +11,13 @@ const Outcomes = () => {
 
       {/* Tujuan AP-02 */}
       <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white text-center sm:text-left max-w-4xl">
-        <b>AP-02 :</b> Mempraktikkan menulis kode program kemudian menjalankan dengan bahasa prosedural/tekstual tertentu
+        <ol className="list-decimal pl-4 text-start">
+          <li>Siswa mampu memahami dan menjelaskan mekanisme input, proses, dan output dalam pemograman prosedural.</li>
+          <li>Siswa dapat menggunakan bahasa pemograman prosedural untuk menulis kode, menjalankan program, dan memahami operator bilangan serta fungsi input / output (contoh: printf,puts,scanf)</li>
+          <li>Meningkatkan keterampilan siswa dalam mengembangkan program terstruktur berbasis strategi algoritmik yang tepat.</li>
+        </ol>
       </p>
 
-      {/* Evidence */}
-      <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-4xl">
-        <b>Evidence</b>
-        <br />
-        <b>AP-02 :</b>
-        <ul className="list-disc pl-5">
-          <li>A. Siswa menjelaskan komponen penyusun program</li>
-          <li>B. Siswa membuat kode program sederhana dengan bahasa prosedural/tekstual tertentu dan menjalankannya.</li>
-        </ul>
-      </p>
 
       {/* Tombol navigasi */}
       <div className="space-x-4 sm:space-x-8 md:space-x-12 flex w-full justify-between">

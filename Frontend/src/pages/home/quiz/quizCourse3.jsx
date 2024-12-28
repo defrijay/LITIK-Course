@@ -103,7 +103,7 @@ const ResultPage = ({ answers, questions, score, correctAnswers, onFinish, onGoT
         {questions.map((question, index) => (
           <div key={index}>
             <h3 className="font-semibold text-md md:text-lg mb-2">Soal {question.number}</h3>
-
+ 
             {/* Menampilkan gambar soal */}
             <div className="mb-4 flex justify-center">
               {question.imageSrc && (
@@ -184,6 +184,11 @@ const Pembahasan = ({ answers, correctAnswers, questions, pembahasan, onBackToSt
             {/* Menampilkan jawaban yang benar */}
             <p className="font-medium text-green-500">
               Jawaban yang Benar: {correctAnswers[question.number]}
+            </p>
+
+            {/* Menampilkan pembahasan */}
+            <p className="text-lg text-gray-300 mt-4">
+              Pembahasan: <span className="italic text-sm">{pembahasan[question.number]}</span>
             </p>
 
             {/* Pembahasan Soal */}
