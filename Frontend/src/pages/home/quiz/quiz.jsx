@@ -251,15 +251,18 @@ const Quiz = () => {
     (total, key) => total + (answers[key] === correctAnswers[key] ? 1 : 0),
     0
   );
+  console.log("Calculated score:", score); // Check the score here
+  
 
   const { identity } = useIdentity();
 
   const handleSubmitScore = async () => {
     if (isNaN(score) || score < 0) {
       console.error("Invalid score value:", score);
-      return;
+      return; // Avoid sending invalid score
     }
   
+    // Proceed with submitting the score if it's valid
     try {
       const lastIdResponse = await fetch(`https://litik-course-be.vercel.app/api/users/last`);
       if (!lastIdResponse.ok) {
@@ -286,13 +289,14 @@ const Quiz = () => {
         throw new Error(`Failed to update score: ${errorDetails.message}`);
       }
       
-  
       const updatedData = await scoreResponse.json();
       console.log("Score updated successfully:", updatedData.message);
     } catch (error) {
       console.error("Error updating score:", error.message);
     }
   };
+  
+  
   
   
   
