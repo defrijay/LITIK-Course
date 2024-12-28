@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
@@ -7,9 +8,9 @@ const app = express();
 
 // Middleware CORS
 app.use(cors({
-  origin: "https://litik-course.vercel.app", // Origin frontend yang diizinkan
-  methods: ["GET", "POST", "PUT", "DELETE"], // HTTP methods yang diizinkan
-  credentials: true, // Jika menggunakan cookie atau header otentikasi
+  origin: process.env.CLIENT_URL || "https://litik-course.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 }));
 
 // Middleware lainnya
@@ -25,6 +26,12 @@ app.get("/api", (req, res) => {
 
 // Default route
 app.get("/", (req, res) => res.send("Express API running on Vercel"));
+
+// Handler kesalahan global
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong!" });
+});
 
 // Export app for Vercel
 module.exports = app;
