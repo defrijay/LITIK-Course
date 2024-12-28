@@ -12,7 +12,7 @@ const UserList = () => {
             try {
                 // Mengambil URL backend dari .env
                 const backendUrl = process.env.REACT_APP_BACKEND_URL;
-                const response = await axios.get(`https://litik-course-be.vercel.app/api/users`);
+                const response = await axios.get(`${backendUrl}/api/users`);
                 setUsers(response.data); // Menyimpan data pengguna ke state
                 setLoading(false);
             } catch (err) {
@@ -25,8 +25,18 @@ const UserList = () => {
         fetchUsers();
     }, []);
 
-    if (loading) return <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">Loading...</div>;
-    if (error) return <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">{error}</div>;
+    if (loading)
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
+                Loading...
+            </div>
+        );
+    if (error)
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
+                {error}
+            </div>
+        );
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
@@ -39,6 +49,7 @@ const UserList = () => {
                                 <th className="py-2 px-4 border-b text-center">No.</th>
                                 <th className="py-2 px-4 border-b text-center">Nama</th>
                                 <th className="py-2 px-4 border-b text-center">Kelas</th>
+                                <th className="py-2 px-4 border-b text-center">Skor</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +58,7 @@ const UserList = () => {
                                     <td className="py-2 px-4 border-b text-center">{index + 1}</td> {/* Menampilkan nomor urut */}
                                     <td className="py-2 px-4 border-b text-center">{user.nama}</td>
                                     <td className="py-2 px-4 border-b text-center">{user.kelas}</td>
+                                    <td className="py-2 px-4 border-b text-center">{user.skor || 'N/A'}</td> {/* Menampilkan score */}
                                 </tr>
                             ))}
                         </tbody>

@@ -50,6 +50,21 @@ const updateUser = async (req, res) => {
   }
 };
 
+// Update user score by ID
+const updateUserScore = async (req, res) => {
+  const { id } = req.params;
+  const { score } = req.body;
+  try {
+    const [results] = await db.query('UPDATE users SET skor = ? WHERE id = ?', [skor, id]);
+    if (results.affectedRows === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: 'skor updated successfully' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // Delete user by ID
 const deleteUser = async (req, res) => {
   const { id } = req.params;
@@ -64,4 +79,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserById, createUser, updateUser, deleteUser };
+module.exports = { getUsers, getUserById, createUser, updateUser, updateUserScore ,deleteUser };

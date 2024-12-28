@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useIdentity } from "../../../context/IdentityContext";
 
 const Guide = ({ onNext }) => (
   <div className="h-screen px-12 sm:px-10 md:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
@@ -18,6 +19,7 @@ const Guide = ({ onNext }) => (
     </button>
   </div>
 );
+
 
 
 const Question = ({
@@ -249,6 +251,40 @@ const Quiz = () => {
     (total, key) => total + (answers[key] === correctAnswers[key] ? 1 : 0),
     0
   );
+
+  const { identity } = useIdentity();
+
+  const handleSubmitScore = async () => {
+    if (!identity || !identity.id) {
+      console.error('User ID not found');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`https://litik-course-be.vercel.app/api/users/${identity.id}/score`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ score }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to update score');
+      }
+  
+      const data = await response.json();
+      console.log(data.message); // Success message
+    } catch (error) {
+      console.error('Error updating score:', error.message);
+    }
+  };
+  
+  
+  // Panggil fungsi ini setelah submit
+  handleSubmitScore();
+
+  
   const goToPage = (page) => {
     if (page >= 0 && page < questions.length) {
       setCurrentPage(page);
@@ -267,6 +303,7 @@ const Quiz = () => {
 
   const handleSubmit = () => {
     setShowResults(true);
+    handleSubmitScore();
     closeModal();
   };
 
