@@ -53,7 +53,7 @@ const updateUser = async (req, res) => {
 // Update user score by ID
 const updateUserScore = async (req, res) => {
   const { id } = req.params;
-  const { score } = req.body;
+  const { skor } = req.body;
   try {
     const [results] = await db.query('UPDATE users SET skor = ? WHERE id = ?', [skor, id]);
     if (results.affectedRows === 0) {
