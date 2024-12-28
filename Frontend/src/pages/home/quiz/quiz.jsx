@@ -285,6 +285,7 @@ const Quiz = () => {
     }
   };
   
+  
   // Panggil fungsi ini setelah submit
   useEffect(() => {
     handleSubmitScore();
