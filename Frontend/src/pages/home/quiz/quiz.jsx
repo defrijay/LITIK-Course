@@ -255,6 +255,11 @@ const Quiz = () => {
   const { identity } = useIdentity();
 
   const handleSubmitScore = async () => {
+    if (isNaN(score) || score < 0) {
+      console.error("Invalid score value:", score);
+      return;
+    }
+  
     try {
       const lastIdResponse = await fetch(`https://litik-course-be.vercel.app/api/users/last`);
       if (!lastIdResponse.ok) {
@@ -267,21 +272,20 @@ const Quiz = () => {
         throw new Error("User ID not found in the response");
       }
   
-      console.log("Last user ID:", lastUserId);
-  
       const scoreResponse = await fetch(`https://litik-course-be.vercel.app/api/users/${lastUserId}/score`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ score: Number(score) }),
+        body: JSON.stringify({ score }),
       });
-  
+      
       if (!scoreResponse.ok) {
-        const errorDetails = await scoreResponse.text();
-        console.error("Error details:", errorDetails);
-        throw new Error(`Failed to update score: ${errorDetails}`);
+        const errorDetails = await scoreResponse.json();
+        console.error("Error updating score:", errorDetails.message);
+        throw new Error(`Failed to update score: ${errorDetails.message}`);
       }
+      
   
       const updatedData = await scoreResponse.json();
       console.log("Score updated successfully:", updatedData.message);
@@ -289,6 +293,7 @@ const Quiz = () => {
       console.error("Error updating score:", error.message);
     }
   };
+  
   
   
   
