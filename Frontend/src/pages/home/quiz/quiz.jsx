@@ -255,28 +255,31 @@ const Quiz = () => {
   const { identity } = useIdentity();
 
   const handleSubmitScore = async () => {
-    if (!identity || !identity.id) {
-      console.error("User ID tidak ditemukan di context.");
-      return;
-    }
-
-    const userId = identity.id; // Ambil ID pengguna dari context
-
     try {
-      const response = await fetch(`https://litik-course-be.vercel.app/api/users/${userId}/score`, {
+      // Ambil ID terakhir dari database
+      const lastIdResponse = await fetch(`https://litik-course-be.vercel.app/api/users/last`);
+      if (!lastIdResponse.ok) {
+        throw new Error("Failed to fetch the last user ID");
+      }
+  
+      const lastUserData = await lastIdResponse.json();
+      const lastUserId = lastUserData.id; // Pastikan respons memiliki format { id: ... }
+  
+      // Kirim skor ke user dengan ID terakhir
+      const scoreResponse = await fetch(`https://litik-course-be.vercel.app/api/users/${lastUserId}/score`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ score }),
       });
-
-      if (!response.ok) {
+  
+      if (!scoreResponse.ok) {
         throw new Error("Failed to update score");
       }
-
-      const data = await response.json();
-      console.log(data.message); // Pesan sukses
+  
+      const updatedData = await scoreResponse.json();
+      console.log("Score updated:", updatedData.message); // Pesan sukses
     } catch (error) {
       console.error("Error updating score:", error.message);
     }
@@ -284,8 +287,12 @@ const Quiz = () => {
   
   
   
+  
   // Panggil fungsi ini setelah submit
-  handleSubmitScore();
+  useEffect(() => {
+    handleSubmitScore();
+  }, [score]); // Dipanggil setiap kali skor diperbarui
+  
 
   
   const goToPage = (page) => {

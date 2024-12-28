@@ -54,16 +54,40 @@ const updateUser = async (req, res) => {
 const updateUserScore = async (req, res) => {
   const { id } = req.params;
   const { skor } = req.body;
+
+  if (typeof skor !== 'number' || skor < 0) {
+    return res.status(400).json({ message: "Invalid score value" });
+  }
+
   try {
     const [results] = await db.query('UPDATE users SET skor = ? WHERE id = ?', [skor, id]);
     if (results.affectedRows === 0) {
       return res.status(404).json({ message: "User not found" });
     }
-    res.status(200).json({ message: 'skor updated successfully' });
+    res.status(200).json({ message: 'Score updated successfully' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
+
+
+// Get the last user ID
+const getLastUserId = async (req, res) => {
+  try {
+    const [results] = await db.query('SELECT id FROM users ORDER BY id DESC LIMIT 1');
+    if (results.length === 0) {
+      return res.status(404).json({ message: "No users found" });
+    }
+    res.status(200).json({ id: results[0].id });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+module.exports = { getUsers, getUserById, createUser, updateUser, updateUserScore, deleteUser, getLastUserId };
+
+
 
 // Delete user by ID
 const deleteUser = async (req, res) => {
@@ -79,4 +103,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserById, createUser, updateUser, updateUserScore ,deleteUser };
+module.exports = { getUsers, getUserById, createUser, updateUser, updateUserScore, getLastUserId, deleteUser };
