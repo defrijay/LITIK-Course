@@ -16,7 +16,7 @@ const getUserById = async (req, res) => {
   try {
     const [results] = await db.query('SELECT * FROM users WHERE id = ?', [id]);
     if (results.length === 0) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User gada" });
     }
     res.status(200).json(results[0]);
   } catch (err) {
