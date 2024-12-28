@@ -74,6 +74,7 @@ const updateUserScore = async (req, res) => {
 const getLastUserId = async (req, res) => {
   try {
     const [results] = await db.query('SELECT id FROM users ORDER BY id DESC LIMIT 1');
+    console.log(results); // Debugging untuk melihat hasil query
     if (results.length === 0) {
       return res.status(404).json({ message: "No users found" });
     }
@@ -82,6 +83,7 @@ const getLastUserId = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 // Delete user by ID
 const deleteUser = async (req, res) => {
