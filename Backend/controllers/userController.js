@@ -85,10 +85,6 @@ const getLastUserId = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserById, createUser, updateUser, updateUserScore, deleteUser, getLastUserId };
-
-
-
 // Delete user by ID
 const deleteUser = async (req, res) => {
   const { id } = req.params;
@@ -103,4 +99,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserById, createUser, updateUser, updateUserScore, getLastUserId, deleteUser };
+module.exports = { getUsers, getUserById, createUser, updateUser, updateUserScore, deleteUser, getLastUserId };
