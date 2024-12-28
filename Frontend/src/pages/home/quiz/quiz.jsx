@@ -270,7 +270,8 @@ const Quiz = () => {
       });
   
       if (!response.ok) {
-        throw new Error('Failed to update score');
+        const errorData = await response.json(); // Parsing error response dari backend
+        throw new Error(`Error ${response.status}: ${errorData.message || 'Failed to update score'}`);
       }
   
       const data = await response.json();
@@ -279,6 +280,7 @@ const Quiz = () => {
       console.error('Error updating score:', error.message);
     }
   };
+  
   
   
   // Panggil fungsi ini setelah submit

@@ -58,7 +58,7 @@ const UserList = () => {
                                     <td className="py-2 px-4 border-b text-center">{index + 1}</td> {/* Menampilkan nomor urut */}
                                     <td className="py-2 px-4 border-b text-center">{user.nama}</td>
                                     <td className="py-2 px-4 border-b text-center">{user.kelas}</td>
-                                    <td className="py-2 px-4 border-b text-center">{user.skor || 'N/A'}</td> {/* Menampilkan score */}
+                                    <td className="py-2 px-4 border-b text-center">{user.skor || ' '}</td> {/* Menampilkan score */}
                                 </tr>
                             ))}
                         </tbody>
