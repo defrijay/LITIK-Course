@@ -254,14 +254,23 @@ const Quiz = () => {
   
   const { identity } = useIdentity();
 
-  const getLastUserId = async () => {
+  const getLastUser Id = async () => {
     try {
       const response = await fetch('/api/users/last');
-      const data = await response.json();
+      
+      // Log respons untuk debugging
+      const text = await response.text();
+      console.log("Response text:", text); // Log respons sebagai teks
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = JSON.parse(text); // Coba parse teks sebagai JSON
       return data.id; // Mengembalikan ID pengguna terakhir
     } catch (error) {
       console.error("Error fetching last user ID:", error);
-      return null;
+      return null; // Kembalikan null jika terjadi kesalahan
     }
   };
   
