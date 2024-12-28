@@ -267,16 +267,19 @@ const Quiz = () => {
         throw new Error("User ID not found in the response");
       }
   
+      console.log("Last user ID:", lastUserId);
+  
       const scoreResponse = await fetch(`https://litik-course-be.vercel.app/api/users/${lastUserId}/score`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ score }),
+        body: JSON.stringify({ score: Number(score) }),
       });
   
       if (!scoreResponse.ok) {
         const errorDetails = await scoreResponse.text();
+        console.error("Error details:", errorDetails);
         throw new Error(`Failed to update score: ${errorDetails}`);
       }
   
@@ -286,6 +289,7 @@ const Quiz = () => {
       console.error("Error updating score:", error.message);
     }
   };
+  
   
   
   
