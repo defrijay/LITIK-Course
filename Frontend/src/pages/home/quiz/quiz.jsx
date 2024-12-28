@@ -254,46 +254,41 @@ const Quiz = () => {
   
   const { identity } = useIdentity();
 
-  const getLastUser Id = async () => {
-    try {
-      const response = await fetch('/api/users/last');
-      
-      // Log respons untuk debugging
-      const text = await response.text();
-      console.log("Response text:", text); // Log respons sebagai teks
+    // Fungsi untuk mengambil ID user terakhir
+    const getLastUserId = async () => {
+      try {
+        const response = await fetch('https://litik-course-be.vercel.app/api/users/last');
+        const text = await response.text();
   
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok || text.startsWith('<!doctype html>')) {
+          throw new Error('Invalid response from server');
+        }
+  
+        const data = JSON.parse(text);
+        setLastUserId(data.id);
+      } catch (error) {
+        console.error('Error fetching last user ID:', error);
       }
+    };
   
-      const data = JSON.parse(text); // Coba parse teks sebagai JSON
-      return data.id; // Mengembalikan ID pengguna terakhir
-    } catch (error) {
-      console.error("Error fetching last user ID:", error);
-      return null; // Kembalikan null jika terjadi kesalahan
-    }
-  };
+    // Fungsi untuk mengupdate skor pengguna
+    const updateUserScore = async (userId, score) => {
+      try {
+        const response = await fetch(`https://litik-course-be.vercel.app/api/users/${userId}/score`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ skor: score }),
+        });
   
-  const updateUserScore = async (userId, score) => {
-    try {
-      const response = await fetch(`/api/users/${userId}/score`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ skor: score }),
-      });
+        if (!response.ok) {
+          throw new Error('Failed to update score');
+        }
   
-      if (!response.ok) {
-        throw new Error('Failed to update score');
+        console.log('Score updated successfully');
+      } catch (error) {
+        console.error('Error updating score:', error);
       }
-  
-      const data = await response.json();
-      console.log(data.message); // Menampilkan pesan sukses
-    } catch (error) {
-      console.error("Error updating user score:", error);
-    }
-  };
+    };
   
   const handleSubmitScore = async () => {
     const userId = await getLastUserId();
