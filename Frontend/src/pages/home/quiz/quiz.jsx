@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useIdentity } from "../../../context/IdentityContext";
+import React, { useState, useEffect } from "react";
 
 const Guide = ({ onNext }) => (
   <div className="h-screen px-12 sm:px-10 md:px-20 flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-400 to-blue-500">
@@ -285,16 +286,12 @@ const Quiz = () => {
     }
   };
   
-  
-  
-  
   // Panggil fungsi ini setelah submit
   useEffect(() => {
     handleSubmitScore();
   }, [score]); // Dipanggil setiap kali skor diperbarui
   
 
-  
   const goToPage = (page) => {
     if (page >= 0 && page < questions.length) {
       setCurrentPage(page);
