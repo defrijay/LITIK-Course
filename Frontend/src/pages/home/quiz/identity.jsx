@@ -6,6 +6,7 @@ import { useIdentity } from '../../../context/IdentityContext';
 const Identity = () => {
     const [nama, setNama] = useState('');
     const [kelas, setKelas] = useState('');
+    const [skor, setSkor] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const { setIdentity } = useIdentity();
