@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../db');  // Make sure your DB connection is properly set up
 
 // Get all users
 const getUsers = async (req, res) => {
@@ -69,8 +69,6 @@ const updateUserScore = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
-
 
 // Get the last user ID
 const getLastUserId = async (req, res) => {
