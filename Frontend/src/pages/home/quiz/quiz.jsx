@@ -21,7 +21,6 @@ const Guide = ({ onNext }) => (
 );
 
 
-
 const Question = ({
   number,
   text,
@@ -253,61 +252,56 @@ const Quiz = () => {
   );
   console.log("Calculated score:", score); // Check the score here
   
-
   const { identity } = useIdentity();
 
-  const handleSubmitScore = async () => {
-    if (isNaN(score) || score < 0) {
-      console.error("Invalid score value:", score);
-      return; // Avoid sending invalid score
-    }
-  
-    // Proceed with submitting the score if it's valid
+  const getLastUserId = async () => {
     try {
-      const lastIdResponse = await fetch(`https://litik-course-be.vercel.app/api/users/last`);
-      if (!lastIdResponse.ok) {
-        throw new Error(`Failed to fetch the last user ID: ${lastIdResponse.statusText}`);
-      }
-  
-      const lastUserData = await lastIdResponse.json();
-      const lastUserId = lastUserData.id;
-      if (!lastUserId) {
-        throw new Error("User ID not found in the response");
-      }
-  
-      const scoreResponse = await fetch(`https://litik-course-be.vercel.app/api/users/${lastUserId}/score`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ score }),
-      });
-      
-      if (!scoreResponse.ok) {
-        const errorDetails = await scoreResponse.json();
-        console.error("Error updating score:", errorDetails.message);
-        throw new Error(`Failed to update score: ${errorDetails.message}`);
-      }
-      
-      const updatedData = await scoreResponse.json();
-      console.log("Score updated successfully:", updatedData.message);
+      const response = await fetch('/api/users/last');
+      const data = await response.json();
+      return data.id; // Mengembalikan ID pengguna terakhir
     } catch (error) {
-      console.error("Error updating score:", error.message);
+      console.error("Error fetching last user ID:", error);
+      return null;
     }
   };
   
+  const updateUserScore = async (userId, score) => {
+    try {
+      const response = await fetch(`/api/users/${userId}/score`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ skor: score }),
+      });
   
+      if (!response.ok) {
+        throw new Error('Failed to update score');
+      }
   
+      const data = await response.json();
+      console.log(data.message); // Menampilkan pesan sukses
+    } catch (error) {
+      console.error("Error updating user score:", error);
+    }
+  };
   
+  const handleSubmitScore = async () => {
+    const userId = await getLastUserId();
+    if (userId) {
+      await updateUserScore(userId, score);
+    }
+  };
   
-  
-  
-  // Panggil fungsi ini setelah submit
   useEffect(() => {
-    handleSubmitScore();
-  }, [score]); // Dipanggil setiap kali skor diperbarui
+    const submitScore = async () => {
+      if (score > 0) {
+        await handleSubmitScore();
+      }
+    };
+    submitScore();
+  }, [score]);
   
-
   const goToPage = (page) => {
     if (page >= 0 && page < questions.length) {
       setCurrentPage(page);
