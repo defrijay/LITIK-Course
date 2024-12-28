@@ -7,13 +7,14 @@ const app = express();
 
 // Middleware CORS
 app.use(cors({
-  origin: "https://litik-course.vercel.app", // Origin frontend yang diizinkan
-  methods: ["GET", "POST", "PUT", "DELETE"], // HTTP methods yang diizinkan
-  credentials: true, // Jika menggunakan cookie atau header otentikasi
+    origin: "https://litik-course.vercel.app", // Origin frontend yang diizinkan
+    methods: ["GET", "POST", "PUT", "DELETE"], // HTTP methods yang diizinkan
+    credentials: true, // Jika menggunakan cookie atau header otentikasi
+    allowedHeaders: ["Content-Type", "Authorization"], // Header yang diizinkan
 }));
 
-// Menangani permintaan OPTIONS
-app.options('*', cors());
+// Tangani preflight request
+app.options("*", cors());
 
 // Middleware lainnya
 app.use(bodyParser.json());
@@ -23,7 +24,7 @@ app.use("/api", userRoutes);
 
 // Default handler for /api
 app.get("/api", (req, res) => {
-  res.send("Welcome to the API endpoint");
+    res.send("Welcome to the API endpoint");
 });
 
 // Default route

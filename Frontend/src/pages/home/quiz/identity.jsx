@@ -24,8 +24,17 @@ const Identity = () => {
             setMessage('');
             navigate('/quiz');
         } catch (error) {
-            console.error('Error:', error);
-            setMessage('Gagal menyimpan data. Pastikan server berjalan dengan baik.');
+            // Tangani berbagai jenis error
+            if (error.response) {
+                console.error("Server responded with an error:", error.response.data);
+                setMessage(`Error: ${error.response.data.message || 'Terjadi kesalahan pada server.'}`);
+            } else if (error.request) {
+                console.error("No response received:", error.request);
+                setMessage("Tidak ada respons dari server. Periksa koneksi backend.");
+            } else {
+                console.error("Error setting up the request:", error.message);
+                setMessage("Terjadi kesalahan saat mengatur permintaan.");
+            }
         }
     };
 
