@@ -204,6 +204,7 @@ const Quiz = () => {
   const [showResults, setShowResults] = useState(false);
   const [isGuideVisible, setIsGuideVisible] = useState(false);
   const [showPembahasan, setShowPembahasan] = useState(false);
+  const [lastUserId, setLastUserId] = useState(null)
 
 
   const questions = [
@@ -246,49 +247,55 @@ const Quiz = () => {
   };
 
 
-  const score = Object.keys(answers).reduce(
-    (total, key) => total + (answers[key] === correctAnswers[key] ? 1 : 0),
-    0
-  );
-  console.log("Calculated score:", score); // Check the score here
-  
+  // const score = Object.keys(answers).reduce(
+  //   (total, key) => total + (answers[key] === correctAnswers[key] ? 1 : 0),
+  //   0
+  // );
+  // console.log("Calculated score:", score); // Check the score here
+  const calculateScore = (currentAnswers) => {
+    return Object.keys(currentAnswers).reduce(
+      (total, key) => total + (currentAnswers[key] === correctAnswers[key] ? 1 : 0),
+      0
+    );
+  };
+
   const { identity } = useIdentity();
 
-    // Fungsi untuk mengambil ID user terakhir
-    const getLastUserId = async () => {
-      try {
-        const response = await fetch('https://litik-course-be.vercel.app/api/users/last');
-        const text = await response.text();
-  
-        if (!response.ok || text.startsWith('<!doctype html>')) {
-          throw new Error('Invalid response from server');
-        }
-  
-        const data = JSON.parse(text);
-        setLastUserId(data.id);
-      } catch (error) {
-        console.error('Error fetching last user ID:', error);
+  // Fetch the last user ID
+  const getLastUserId = async () => {
+    try {
+      const response = await fetch('https://litik-course-be.vercel.app/api/users/last');
+      const text = await response.text();
+
+      if (!response.ok || text.startsWith('<!doctype html>')) {
+        throw new Error('Invalid response from server');
       }
-    };
-  
-    // Fungsi untuk mengupdate skor pengguna
-    const updateUserScore = async (userId, score) => {
-      try {
-        const response = await fetch(`https://litik-course-be.vercel.app/api/users/${userId}/score`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ skor: score }),
-        });
-  
-        if (!response.ok) {
-          throw new Error('Failed to update score');
-        }
-  
-        console.log('Score updated successfully');
-      } catch (error) {
-        console.error('Error updating score:', error);
+
+      const data = JSON.parse(text);
+      setLastUserId(data.id);
+    } catch (error) {
+      console.error('Error fetching last user ID:', error);
+    }
+  };
+
+  // Update user score
+  const updateUserScore = async (userId, score) => {
+    try {
+      const response = await fetch(`https://litik-course-be.vercel.app/api/users/${userId}/score`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ skor: score }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update score');
       }
-    };
+
+      console.log('Score updated successfully');
+    } catch (error) {
+      console.error('Error updating score:', error);
+    }
+  };
   
   const handleSubmitScore = async () => {
     const userId = await getLastUserId();
@@ -296,6 +303,16 @@ const Quiz = () => {
       await updateUserScore(userId, score);
     }
   };
+
+  setAnswers(updatedAnswers);
+
+  // Calculate score and update immediately
+  const score = calculateScore(updatedAnswers);
+  console.log("Calculated score:", score); // Log the score for verification
+
+  if (lastUserId) {
+    updateUserScore(lastUserId, score); // Update score in the database
+  }
   
   useEffect(() => {
     const submitScore = async () => {
@@ -312,11 +329,21 @@ const Quiz = () => {
     }
   };
 
-  const handleOptionChange = (option) => {
-    setAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questions[currentPage].number]: option, // Gunakan number dari soal
-    }));
+  const handleOptionChange = async (option) => {
+    const updatedAnswers = {
+      ...answers,
+      [questions[currentPage].number]: option,
+    };
+
+    setAnswers(updatedAnswers);
+
+    // Calculate score and update immediately
+    const score = calculateScore(updatedAnswers);
+    console.log("Calculated score:", score); // Log the score for verification
+
+    if (lastUserId) {
+      await updateUserScore(lastUserId, score); // Update score in the database
+    }
   };
 
   const openModal = () => setIsModalOpen(true);
