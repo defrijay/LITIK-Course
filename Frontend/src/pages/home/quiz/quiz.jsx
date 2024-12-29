@@ -258,12 +258,12 @@ const Quiz = () => {
   
   const handleSubmitScore = async () => {
     try {
-      const response = await fetch('/api/users/last'); // Ganti dengan endpoint yang sesuai
+      const response = await fetch('https://litik-course-be.vercel.app/api/users/last'); // Ganti dengan endpoint yang sesuai
       const data = await response.json();
       const userId = data.id;
   
       if (userId) {
-        const updateResponse = await fetch(`/api/users/${userId}/score`, {
+        const updateResponse = await fetch(`https://litik-course-be.vercel.app/api/users/${userId}/score`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -289,7 +289,7 @@ const Quiz = () => {
     submitScore();
   }, [score]);
 
-  
+
   const goToPage = (page) => {
     if (page >= 0 && page < questions.length) {
       setCurrentPage(page);
